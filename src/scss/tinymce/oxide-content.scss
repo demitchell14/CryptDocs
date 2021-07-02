@@ -1,0 +1,1147 @@
+.editor-day {
+    --editor-white: white;
+    --editor-text-main: rgba(31, 30, 30, 1);
+}
+
+.editor-night {
+    --editor-white: #434343;
+    --editor-text-main: rgba(244, 246, 249, 1);
+}
+
+.mce-content-body {
+    color: var(--editor-text-main);
+}
+
+//colors
+$color_endeavour_70_approx: rgba(0, 84, 180, 0.7);
+$color_buttermilk_approx: #fff0b7;
+$color_kournikova_approx: #ffe168;
+$black: black;
+$white:  white;
+$color_sail_approx: #b3d4fc;
+$color_pampas_approx: #f5f2f0;
+$slate_gray: slategray;
+$color_martini_approx: #999;
+$color_fresh_eggplant_approx: #905;
+$color_limeade_approx: #690;
+$color_cape_palliser_approx: #9a6e3a;
+$white_50: hsla(0, 0%, 100%, 0.5);
+$color_deep_cerulean_approx: #07a;
+$color_cabaret_approx: #dd4a68;
+$color_california_approx: #e90;
+$gray:  gray;
+$color_silver_chalice_approx: #aaa;
+$color_big_stone_70_approx: rgba(34, 47, 62, 0.7);
+$color_dodger_blue_approx: #4099ff;
+$color_dorado_approx: #555;
+$black_75: rgba(0, 0, 0, 0.75);
+$color_emerald_approx: #2dc26b;
+$color_cinnabar_approx: #e03e2d;
+$color_corn_approx: #f1c40f;
+$color_curious_blue_approx: #3598db;
+$color_lavender_approx: #b96ad9;
+$color_zest_approx: #e67e23;
+$color_dawn_approx: #aaa69d;
+$color_lavender_magenta_approx: #f368e0;
+$color_mercury_approx: #eaeaea;
+$color_silver_approx: #ccc;
+$color_sail_70_approx: rgba(180, 215, 255, 0.7);
+
+//fonts
+$font_0: Consolas;
+$font_1: Monaco;
+$font_2: Andale Mono;
+$font_3: Ubuntu Mono;
+$font_4: monospace;
+$font_5: sans-serif;
+
+//data-uris
+$data_uri_0: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'8'%20height%3D'12'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M0%200L8%200%208%2012%204.09117821%209%200%2012z'%2F%3E%3C%2Fsvg%3E%0A";
+$data_uri_1: "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-unchecked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2215%22%20height%3D%2215%22%20x%3D%22.5%22%20y%3D%22.5%22%20fill-rule%3D%22nonzero%22%20stroke%3D%22%234C4C4C%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A";
+$data_uri_2: "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-checked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%234099FF%22%20fill-rule%3D%22nonzero%22%20rx%3D%222%22%2F%3E%3Cpath%20id%3D%22Path%22%20fill%3D%22%23FFF%22%20fill-rule%3D%22nonzero%22%20d%3D%22M11.5703186%2C3.14417309%20C11.8516238%2C2.73724603%2012.4164781%2C2.62829933%2012.83558%2C2.89774797%20C13.260121%2C3.17069355%2013.3759736%2C3.72932262%2013.0909105%2C4.14168582%20L7.7580587%2C11.8560195%20C7.43776896%2C12.3193404%206.76483983%2C12.3852142%206.35607322%2C11.9948725%20L3.02491697%2C8.8138662%20C2.66090143%2C8.46625845%202.65798871%2C7.89594698%203.01850234%2C7.54483354%20C3.373942%2C7.19866177%203.94940006%2C7.19592841%204.30829608%2C7.5386474%20L6.85276923%2C9.9684299%20L11.5703186%2C3.14417309%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A";
+$data_uri_3: "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%0A%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%20d%3D%22M15%2C6%20C15%2C5.45%2014.55%2C5%2014%2C5%20L6%2C5%20C5.45%2C5%205%2C5.45%205%2C6%20L5%2C10%20C5%2C10.55%205.45%2C11%206%2C11%20L14%2C11%20C14.55%2C11%2015%2C10.55%2015%2C10%20L15%2C9%20L16%2C9%20L16%2C12%20L9%2C12%20L9%2C19%20C9%2C19.55%209.45%2C20%2010%2C20%20L11%2C20%20C11.55%2C20%2012%2C19.55%2012%2C19%20L12%2C14%20L18%2C14%20L18%2C7%20L15%2C7%20L15%2C6%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%20d%3D%22M1%2C1%20L8.25%2C1%20C8.66421356%2C1%209%2C1.33578644%209%2C1.75%20L9%2C1.75%20C9%2C2.16421356%208.66421356%2C2.5%208.25%2C2.5%20L2.5%2C2.5%20L2.5%2C8.25%20C2.5%2C8.66421356%202.16421356%2C9%201.75%2C9%20L1.75%2C9%20C1.33578644%2C9%201%2C8.66421356%201%2C8.25%20L1%2C1%20Z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A";
+
+//urls
+$url_0: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+$url_1: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M4%203h16a1%201%200%200%201%201%201v16a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1V4a1%201%200%200%201%201-1zm1%202v14h14V5H5zm4.79%202.565l5.64%204.028a.5.5%200%200%201%200%20.814l-5.64%204.028a.5.5%200%200%201-.79-.407V7.972a.5.5%200%200%201%20.79-.407z%22%2F%3E%3C%2Fsvg%3E%0A");
+$url_2: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2236%22%20height%3D%2212%22%20viewBox%3D%220%200%2036%2012%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Ccircle%20cx%3D%226%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%20%20%3Ccircle%20cx%3D%2218%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20begin%3D%22.33s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%20%20%3Ccircle%20cx%3D%2230%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20begin%3D%22.66s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%3C%2Fsvg%3E%0A");
+$url_3: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'4'%20height%3D'4'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20stroke%3D'%23ff0000'%20fill%3D'none'%20stroke-linecap%3D'round'%20stroke-opacity%3D'.75'%20d%3D'M0%203L2%201%204%203'%2F%3E%3C%2Fsvg%3E%0A");
+$url_4: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'4'%20height%3D'4'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20stroke%3D'%2300A835'%20fill%3D'none'%20stroke-linecap%3D'round'%20d%3D'M0%203L2%201%204%203'%2F%3E%3C%2Fsvg%3E%0A");
+$url_5: url(data:image/gif;base64,R0lGODlhCQAJAJEAAAAAAP///7u7u////yH5BAEAAAMALAAAAAAJAAkAAAIQnG+CqCN/mlyvsRUpThG6AgA7);
+$url_6: url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybGu1JuxHoAfRNRW3TWXyF2YiRUAOw==);
+$url_7: url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8Hybbx4oOuqgTynJd6bGlWg3DkJzoaUAAAOw==);
+$url_8: url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIZjI8Hybbx4oOuqgTynJf2Ln2NOHpQpmhAAQA7);
+$url_9: url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxInR0zqeAdhtJlXwV1oCll2HaWgAAOw==);
+$url_10: url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxIoiuwjane4iq5GlW05GgIkIZUAAAOw==);
+$url_11: url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxIoiuwjan04jep1iZ1XRlAo5bVgAAOw==);
+$url_12: url(data:image/gif;base64,R0lGODlhEgAKAIABALu7u////yH5BAEAAAEALAAAAAASAAoAAAIfjI9poI0cgDywrhuxfbrzDEbQM2Ei5aRjmoySW4pAAQA7);
+$url_13: url(data:image/gif;base64,R0lGODlhKAAKAIABALu7u////yH5BAEAAAEALAAAAAAoAAoAAAI5jI+pywcNY3sBWHdNrplytD2ellDeSVbp+GmWqaDqDMepc8t17Y4vBsK5hDyJMcI6KkuYU+jpjLoKADs=);
+$url_14: url(data:image/gif;base64,R0lGODlhKgAKAIABALu7u////yH5BAEAAAEALAAAAAAqAAoAAAI6jI+pywkNY3wG0GBvrsd2tXGYSGnfiF7ikpXemTpOiJScasYoDJJrjsG9gkCJ0ag6KhmaIe3pjDYBBQA7);
+$url_15: url(data:image/gif;base64,R0lGODlhPgAKAIABALu7u////yH5BAEAAAEALAAAAAA+AAoAAAJPjI+py+0Knpz0xQDyuUhvfoGgIX5iSKZYgq5uNL5q69asZ8s5rrf0yZmpNkJZzFesBTu8TOlDVAabUyatguVhWduud3EyiUk45xhTTgMBBQA7);
+$url_16: url(data:image/gif;base64,R0lGODlhLQAKAIABALu7u////yH5BAEAAAEALAAAAAAtAAoAAAI/jI+pywwNozSP1gDyyZcjb3UaRpXkWaXmZW4OqKLhBmLs+K263DkJK7OJeifh7FicKD9A1/IpGdKkyFpNmCkAADs=);
+$url_17: url(data:image/gif;base64,R0lGODlhFQAKAIABALu7uwAAACH5BAEAAAEALAAAAAAVAAoAAAIjjI+ZoN0cgDwSmnpz1NCueYERhnibZVKLNnbOq8IvKpJtVQAAOw==);
+$url_18: url(data:image/gif;base64,R0lGODlhJAAKAIAAALu7u////yH5BAEAAAEALAAAAAAkAAoAAAI0jI+py+2fwAHUSFvD3RlvG4HIp4nX5JFSpnZUJ6LlrM52OE7uSWosBHScgkSZj7dDKnWAAgA7);
+$url_19: url(data:image/gif;base64,R0lGODlhJwAKAIABALu7uwAAACH5BAEAAAEALAAAAAAnAAoAAAI3jI+pywYNI3uB0gpsRtt5fFnfNZaVSYJil4Wo03Hv6Z62uOCgiXH1kZIIJ8NiIxRrAZNMZAtQAAA7);
+$url_20: url(data:image/gif;base64,R0lGODlhHgAKAIABAKqqqv///yH5BAEAAAEALAAAAAAeAAoAAAItjI+pG8APjZOTzgtqy7I3f1yehmQcFY4WKZbqByutmW4aHUd6vfcVbgudgpYCADs=);
+$url_21: url(data:image/gif;base64,R0lGODlhDQAKAIAAALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybGuYnqUVSjvw26DzzXiqIDlVwAAOw==);
+$url_22: url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybH6HHt0qourxC6CvzXieHyeWQAAOw==);
+$url_23: url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybEOnmOvUoWznTqeuEjNSCqeGRUAOw==);
+
+//@extend-elements
+//original selectors
+//code[class*="language-"], pre[class*="language-"]
+%extend_1 {
+    color: $black;
+    background: none;
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 0 1px var(--editor-white);
+    font-family: $font_0, $font_1, $font_2, $font_3, $font_4;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    //Instead of the line below you could use @include word-break($value)
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    //Instead of the line below you could use @include hyphens($value)
+    hyphens: none;
+}
+
+
+.mce-content-body {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    .mce-item-anchor {
+        background: transparent url($data_uri_0) no-repeat center;
+        cursor: default;
+        display: inline-block;
+        height: 12px !important;
+        padding: 0 2px;
+        //Instead of the line below you could use @include user-select($select)
+        user-select: all;
+        width: 8px !important;
+    }
+    .mce-item-anchor[data-mce-selected] {
+        outline-offset: 1px;
+    }
+    .mce-visual-caret {
+        background-color: $black;
+        background-color: currentColor;
+        position: absolute;
+    }
+    .mce-visual-caret-hidden {
+        display: none;
+    }
+    *[data-mce-caret] {
+        left: -1000px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: auto;
+        top: 0;
+    }
+    .mce-offscreen-selection {
+        left: -2000000px;
+        max-width: 1000000px;
+        position: absolute;
+    }
+    *[contentEditable=false] {
+        cursor: default;
+        *[contentEditable=true] {
+            &:focus {
+                outline: 3px solid $color_sail_approx;
+            }
+            &:hover {
+                outline: 3px solid $color_sail_approx;
+            }
+        }
+    }
+    *[contentEditable=true] {
+        cursor: text;
+    }
+    figure {
+        &.align-left {
+            float: left;
+        }
+        &.align-right {
+            float: right;
+        }
+        &.image.align-center {
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .mce-resize-backdrop {
+        z-index: 10000;
+    }
+    .mce-clonedresizable {
+        cursor: default;
+        opacity: 0.5;
+        outline: 1px dashed $black;
+        position: absolute;
+        z-index: 10001;
+        &.mce-resizetable-columns {
+            th {
+                border: 0;
+            }
+            td {
+                border: 0;
+            }
+        }
+    }
+    .mce-resize-helper {
+        background: $color_dorado_approx;
+        background: $black_75;
+        border: 1px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        color: var(--editor-white);
+        display: none;
+        font-family: $font_5;
+        font-size: 12px;
+        line-height: 14px;
+        margin: 5px 10px;
+        padding: 5px;
+        position: absolute;
+        white-space: nowrap;
+        z-index: 10002;
+    }
+    img[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    video[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    audio[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    object[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    embed[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    table[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+    }
+    hr[data-mce-selected] {
+        outline: 3px solid $color_sail_approx;
+        outline-offset: 1px;
+    }
+    *[contentEditable=false][data-mce-selected] {
+        cursor: not-allowed;
+        outline: 3px solid $color_sail_approx;
+    }
+    *[data-mce-selected="inline-boundary"] {
+        background-color: $color_sail_approx;
+    }
+    .mce-edit-focus {
+        outline: 3px solid $color_sail_approx;
+    }
+    td[data-mce-selected] {
+        position: relative;
+        * {
+            outline: none;
+            //Instead of the line below you could use @include user-select($select)
+            user-select: none;
+        }
+    }
+    th[data-mce-selected] {
+        position: relative;
+        * {
+            outline: none;
+            //Instead of the line below you could use @include user-select($select)
+            user-select: none;
+        }
+    }
+    td[data-mce-selected]::-moz-selection {
+        background: none;
+    }
+    th[data-mce-selected]::-moz-selection {
+        background: none;
+    }
+    td[data-mce-selected]::selection {
+        background: none;
+    }
+    th[data-mce-selected]::selection {
+        background: none;
+    }
+    td[data-mce-selected]::after {
+        background-color: $color_sail_70_approx;
+        border: 1px solid $color_sail_70_approx;
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        mix-blend-mode: multiply;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+    }
+    th[data-mce-selected]::after {
+        background-color: $color_sail_70_approx;
+        border: 1px solid $color_sail_70_approx;
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        mix-blend-mode: multiply;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+    }
+    img::-moz-selection {
+        background: none;
+    }
+    img::selection {
+        background: none;
+    }
+    &:not([dir=rtl])[data-mce-placeholder]:not(.mce-visualblocks)::before {
+        left: 1px;
+    }
+    div.mce-resizehandle {
+        background-color: $color_dodger_blue_approx;
+        border-color: $color_dodger_blue_approx;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        height: 10px;
+        position: absolute;
+        width: 10px;
+        z-index: 10000;
+        &:hover {
+            background-color: $color_dodger_blue_approx;
+        }
+        &:nth-of-type(1) {
+            cursor: nwse-resize;
+        }
+        &:nth-of-type(2) {
+            cursor: nesw-resize;
+        }
+        &:nth-of-type(3) {
+            cursor: nwse-resize;
+        }
+        &:nth-of-type(4) {
+            cursor: nesw-resize;
+        }
+    }
+    &.mce-content-readonly *[contentEditable=true] {
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            outline: none;
+        }
+    }
+}
+.tox-comments-visible {
+    .tox-comment {
+        background-color: $color_buttermilk_approx;
+    }
+    .tox-comment--active {
+        background-color: $color_kournikova_approx;
+    }
+}
+.tox-checklist {
+    > li:not(&.tox-checklist--hidden) {
+        list-style: none;
+        margin: 0.25em 0;
+    }
+    &.tox-checklist--hidden::before {
+        content: url($data_uri_1);
+        cursor: pointer;
+        height: 1em;
+        margin-left: -1.5em;
+        margin-top: 0.125em;
+        position: absolute;
+        width: 1em;
+    }
+    li:not(.tox-checklist--hidden).tox-checklist--checked::before {
+        content: url($data_uri_2);
+    }
+}
+code[class*="language-"] {
+    @extend %extend_1;
+    ::-moz-selection {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+        background: $color_sail_approx;
+    }
+    ::selection {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+        background: $color_sail_approx;
+    }
+}
+pre[class*="language-"] {
+    @extend %extend_1;
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    background: $color_pampas_approx;
+    ::-moz-selection {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+        background: $color_sail_approx;
+    }
+    ::selection {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+        background: $color_sail_approx;
+    }
+}
+pre[class*="language-"]::-moz-selection {
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: none;
+    background: $color_sail_approx;
+}
+code[class*="language-"]::-moz-selection {
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: none;
+    background: $color_sail_approx;
+}
+pre[class*="language-"]::selection {
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: none;
+    background: $color_sail_approx;
+}
+code[class*="language-"]::selection {
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: none;
+    background: $color_sail_approx;
+}
+@media print {
+    code[class*="language-"] {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+    }
+    pre[class*="language-"] {
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: none;
+    }
+    .mce-pagebreak {
+        border: 0;
+    }
+}
+.token {
+    &.comment {
+        color: $slate_gray;
+    }
+    &.prolog {
+        color: $slate_gray;
+    }
+    &.doctype {
+        color: $slate_gray;
+    }
+    &.cdata {
+        color: $slate_gray;
+    }
+    &.punctuation {
+        color: $color_martini_approx;
+    }
+    &.property {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.tag {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.boolean {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.number {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.constant {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.symbol {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.deleted {
+        color: $color_fresh_eggplant_approx;
+    }
+    &.selector {
+        color: $color_limeade_approx;
+    }
+    &.attr-name {
+        color: $color_limeade_approx;
+    }
+    &.string {
+        color: $color_limeade_approx;
+    }
+    &.char {
+        color: $color_limeade_approx;
+    }
+    &.builtin {
+        color: $color_limeade_approx;
+    }
+    &.inserted {
+        color: $color_limeade_approx;
+    }
+    &.operator {
+        color: $color_cape_palliser_approx;
+        background: $white_50;
+    }
+    &.entity {
+        color: $color_cape_palliser_approx;
+        background: $white_50;
+        cursor: help;
+    }
+    &.url {
+        color: $color_cape_palliser_approx;
+        background: $white_50;
+    }
+    &.atrule {
+        color: $color_deep_cerulean_approx;
+    }
+    &.attr-value {
+        color: $color_deep_cerulean_approx;
+    }
+    &.keyword {
+        color: $color_deep_cerulean_approx;
+    }
+    &.function {
+        color: $color_cabaret_approx;
+    }
+    &.class-name {
+        color: $color_cabaret_approx;
+    }
+    &.regex {
+        color: $color_california_approx;
+    }
+    &.important {
+        color: $color_california_approx;
+        font-weight: bold;
+    }
+    &.variable {
+        color: $color_california_approx;
+    }
+    &.bold {
+        font-weight: bold;
+    }
+    &.italic {
+        font-style: italic;
+    }
+}
+.namespace {
+    opacity: 0.7;
+}
+.tox-cursor-format-painter {
+    cursor: url($data_uri_3), default;
+}
+.mce-preview-object {
+    border: 1px solid $gray;
+    display: inline-block;
+    line-height: 0;
+    margin: 0 2px;
+    position: relative;
+    .mce-shim {
+        background: $url_0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.mce-object {
+    background: transparent $url_1 no-repeat center;
+    border: 1px dashed $color_silver_chalice_approx;
+}
+.mce-pagebreak {
+    border: 1px dashed $color_silver_chalice_approx;
+    cursor: default;
+    display: block;
+    height: 5px;
+    margin-top: 15px;
+    page-break-before: always;
+    width: 100%;
+}
+.tiny-pageembed {
+    display: inline-block;
+    position: relative;
+    .mce-shim {
+        background: $url_0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.tiny-pageembed--21by9 {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 42.857143%;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.tiny-pageembed--16by9 {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.tiny-pageembed--4by3 {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 75%;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.tiny-pageembed--1by1 {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+.mce-content-body[data-mce-placeholder] {
+    position: relative;
+    &:not(.mce-visualblocks)::before {
+        color: $color_big_stone_70_approx;
+        content: attr(data-mce-placeholder);
+        position: absolute;
+    }
+}
+.tox-rtc-user-selection {
+    position: relative;
+}
+.tox-rtc-user-cursor {
+    bottom: 0;
+    cursor: default;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    &:hover::after {
+        background-color: inherit;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 100px;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        color: var(--editor-white);
+        content: attr(data-user);
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        left: -5px;
+        min-height: 8px;
+        min-width: 8px;
+        padding: 0 12px;
+        position: absolute;
+        top: -11px;
+        white-space: nowrap;
+        z-index: 1000;
+    }
+}
+.tox-rtc-user-cursor::before {
+    background-color: inherit;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 8px;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    width: 8px;
+}
+.tox-rtc-remote-image {
+    background: $color_mercury_approx $url_2 no-repeat center center;
+    border: 1px solid $color_silver_approx;
+    min-height: 240px;
+    min-width: 320px;
+}
+.mce-match-marker {
+    background: $color_silver_chalice_approx;
+    color: var(--editor-white);
+}
+.mce-match-marker-selected {
+    background: $color_dodger_blue_approx;
+    color: var(--editor-white);
+}
+.mce-match-marker-selected::-moz-selection {
+    background: $color_dodger_blue_approx;
+    color: var(--editor-white);
+}
+.mce-match-marker-selected::selection {
+    background: $color_dodger_blue_approx;
+    color: var(--editor-white);
+}
+@media screen and(-ms-high-contrast: active),(-ms-high-contrast: none) {
+    .mce-content-body {
+        td[data-mce-selected]::after {
+            border-color: $color_endeavour_70_approx;
+        }
+        th[data-mce-selected]::after {
+            border-color: $color_endeavour_70_approx;
+        }
+    }
+}
+.ephox-snooker-resizer-bar {
+    background-color: $color_sail_approx;
+    opacity: 0;
+    //Instead of the line below you could use @include user-select($select)
+    user-select: none;
+    &.ephox-snooker-resizer-bar-dragging {
+        opacity: 1;
+    }
+}
+.ephox-snooker-resizer-cols {
+    cursor: col-resize;
+}
+.ephox-snooker-resizer-rows {
+    cursor: row-resize;
+}
+.mce-spellchecker-word {
+    background-image: $url_3;
+    background-position: 0 calc(100% + 1px);
+    background-repeat: repeat-x;
+    background-size: auto 6px;
+    cursor: default;
+    height: 2rem;
+}
+.mce-spellchecker-grammar {
+    background-image: $url_4;
+    background-position: 0 calc(100% + 1px);
+    background-repeat: repeat-x;
+    background-size: auto 6px;
+    cursor: default;
+}
+.mce-toc {
+    border: 1px solid $gray;
+    h2 {
+        margin: 4px;
+    }
+    li {
+        list-style-type: none;
+    }
+}
+table[style*="border-width: 0px"] {
+    border: 1px dashed $color_silver_approx;
+    td {
+        border: 1px dashed $color_silver_approx;
+    }
+    th {
+        border: 1px dashed $color_silver_approx;
+    }
+    caption {
+        border: 1px dashed $color_silver_approx;
+    }
+}
+.mce-item-table[border="0"] {
+    border: 1px dashed $color_silver_approx;
+    td {
+        border: 1px dashed $color_silver_approx;
+    }
+    th {
+        border: 1px dashed $color_silver_approx;
+    }
+    caption {
+        border: 1px dashed $color_silver_approx;
+    }
+}
+.mce-visualblocks {
+    p {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_5;
+    }
+    h1 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_6;
+    }
+    h2 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_7;
+    }
+    h3 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_8;
+    }
+    h4 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_9;
+    }
+    h5 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_10;
+    }
+    h6 {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_11;
+    }
+    section {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_13;
+    }
+    article {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_14;
+    }
+    blockquote {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_15;
+    }
+    address {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_16;
+    }
+    pre {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_17;
+    }
+    figure {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_18;
+    }
+    figcaption {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        border: 1px dashed $color_silver_approx;
+    }
+    hgroup {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_19;
+    }
+    aside {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_20;
+    }
+    ul {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_21;
+    }
+    ol {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_22;
+    }
+    dl {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_23;
+    }
+    &:not([dir=rtl]) {
+        p {
+            margin-left: 3px;
+        }
+        h1 {
+            margin-left: 3px;
+        }
+        h2 {
+            margin-left: 3px;
+        }
+        h3 {
+            margin-left: 3px;
+        }
+        h4 {
+            margin-left: 3px;
+        }
+        h5 {
+            margin-left: 3px;
+        }
+        h6 {
+            margin-left: 3px;
+        }
+        section {
+            margin-left: 3px;
+        }
+        article {
+            margin-left: 3px;
+        }
+        blockquote {
+            margin-left: 3px;
+        }
+        address {
+            margin-left: 3px;
+        }
+        pre {
+            margin-left: 3px;
+        }
+        figure {
+            margin-left: 3px;
+        }
+        figcaption {
+            margin-left: 3px;
+        }
+        hgroup {
+            margin-left: 3px;
+        }
+        aside {
+            margin-left: 3px;
+        }
+        ul {
+            margin-left: 3px;
+        }
+        ol {
+            margin-left: 3px;
+        }
+        dl {
+            margin-left: 3px;
+        }
+        div:not([data-mce-bogus]) {
+            margin-left: 3px;
+        }
+    }
+    div:not([data-mce-bogus]) {
+        background-repeat: no-repeat;
+        border: 1px dashed $color_silver_approx;
+        margin-left: 3px;
+        padding-top: 10px;
+        background-image: $url_12;
+    }
+}
+.mce-visualblocks[dir=rtl] {
+    p {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h1 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h2 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h3 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h4 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h5 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    h6 {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    section {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    article {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    blockquote {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    address {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    pre {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    figure {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    figcaption {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    hgroup {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    aside {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    ul {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    ol {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    dl {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+    div:not([data-mce-bogus]) {
+        background-position-x: right;
+        margin-right: 3px;
+    }
+}
+.mce-nbsp {
+    background: $color_silver_chalice_approx;
+}
+.mce-shy {
+    background: $color_silver_chalice_approx;
+}
+.mce-shy::after {
+    content: '-';
+}
+body {
+    font-family: $font_5;
+}
+table {
+    border-collapse: collapse;
+}
+[dir=rtl] .tox-checklist > li:not(.tox-checklist--hidden)::before {
+    margin-left: 0;
+    margin-right: -1.5em;
+}
+:not(pre) > code[class*="language-"] {
+    background: $color_pampas_approx;
+    padding: 0.1em;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0.3em;
+    white-space: normal;
+}
+.language-css .token.string {
+    color: $color_cape_palliser_approx;
+    background: $white_50;
+}
+.style .token.string {
+    color: $color_cape_palliser_approx;
+    background: $white_50;
+}
+.mce-preview-object[data-mce-selected="2"] .mce-shim {
+    display: none;
+}
+.tiny-pageembed[data-mce-selected="2"] .mce-shim {
+    display: none;
+}
+.mce-content-body[dir=rtl][data-mce-placeholder]:not(.mce-visualblocks)::before {
+    right: 1px;
+}
+.tox-rtc-user-selection--1 .tox-rtc-user-cursor {
+    background-color: $color_emerald_approx;
+}
+.tox-rtc-user-selection--2 .tox-rtc-user-cursor {
+    background-color: $color_cinnabar_approx;
+}
+.tox-rtc-user-selection--3 .tox-rtc-user-cursor {
+    background-color: $color_corn_approx;
+}
+.tox-rtc-user-selection--4 .tox-rtc-user-cursor {
+    background-color: $color_curious_blue_approx;
+}
+.tox-rtc-user-selection--5 .tox-rtc-user-cursor {
+    background-color: $color_lavender_approx;
+}
+.tox-rtc-user-selection--6 .tox-rtc-user-cursor {
+    background-color: $color_zest_approx;
+}
+.tox-rtc-user-selection--7 .tox-rtc-user-cursor {
+    background-color: $color_dawn_approx;
+}
+.tox-rtc-user-selection--8 .tox-rtc-user-cursor {
+    background-color: $color_lavender_magenta_approx;
+}
+.mce-item-table:not([border]) {
+    border: 1px dashed $color_silver_approx;
+    td {
+        border: 1px dashed $color_silver_approx;
+    }
+    th {
+        border: 1px dashed $color_silver_approx;
+    }
+    caption {
+        border: 1px dashed $color_silver_approx;
+    }
+}

@@ -1,0 +1,3530 @@
+[color-scheme="day"] {
+    --editor-white: white;
+    --editor-text: black;
+    --editor-content-bg: white;
+    --editor-toolbar-bg: #f1f1f1;
+    --editor-text: rgba(31, 30, 30, 0.7);
+    --editor-text-main: rgba(31, 30, 30, 1);
+    --editor-text-disabled: rgba(31, 30, 30, 0.5);
+    --editor-button-color: #fff;
+    --editor-button-hover: #fff;
+}
+[color-scheme="night"] {
+    --editor-white: #434343;
+    --editor-content-bg: #171c25;
+    --editor-toolbar-bg: #272e35;
+    --editor-text: rgba(244, 246, 249, 0.7);
+    --editor-text-main: rgba(244, 246, 249, 1);
+    --editor-text-disabled: rgba(244, 246, 249, 0.5);
+    --editor-button-color: rgba(244, 246, 249, 1);
+    --editor-button-hover: #171c25;
+}
+
+.editor-base {
+    height: 100%;
+    margin: 0;
+    flex-grow: 1;
+}
+
+//var(--editor-button-hover)
+
+//colors
+$color_athens_gray_approx: #f4f6f9;
+$color_pale_sky_approx: #6e737a;
+$color_mariner_50_approx: rgba(32, 122, 183, 0.5);
+$color_mariner_approx: #207ab7;
+$web_orange_50: rgba(255, 165, 0, 0.5);
+$web_orange_80: rgba(255, 165, 0, 0.8);
+$color_pirate_gold_approx: #cc8500;
+$color_guardsman_red_50_approx: rgba(204, 0, 0, 0.5);
+$color_guardsman_red_80_approx: rgba(204, 0, 0, 0.8);
+$color_guardsman_red_approx: #c00;
+$color_sushi_50_approx: rgba(120, 171, 70, 0.5);
+$color_sushi_80_approx: rgba(120, 171, 70, 0.8);
+$color_sushi_approx: #78ab46;
+$color_athens_gray_50_approx: rgba(244, 246, 249, 0.5);
+$color_matisse_approx: #1c6ca1;
+$color_oxford_blue_approx: #3c4752;
+$color_limed_spruce_approx: #323b43;
+$color_shark_approx: #272e35;
+$color_athens_gray_30_approx: rgba(244, 246, 249, 0.3);
+$color_oslo_gray_approx: #888d93;
+$color_gray_chateau_approx: #a2a6ac;
+$color_athens_gray_70_approx: rgba(244, 246, 249, 0.7);
+$color_mirage_approx: #171c25;
+$black_15: rgba(0, 0, 0, 0.15);
+$black:  black;
+$white:  white;
+$red: #f00;
+$color_rose_approx: #ff0080;
+$magenta_fuchsia: #f0f;
+$color_electric_violet_approx: #8000ff;
+$blue: #00f;
+$bluef80: #00f;
+$color_azure_radiance_approx: #0080ff;
+$cyan_aqua: #0ff;
+$color_spring_green_approx: #00ff80;
+$green: #0f0;
+$color_chartreuse_approx: #80ff00;
+$yellow: #ff0;
+$color_flush_orange_approx: #ff8000;
+$color_gray_30_approx: rgba(127, 127, 127, 0.3);
+$color_cinnabar_approx: #e74c3c;
+$color_athens_gray_10_approx: rgba(244, 246, 249, 0.1);
+$color_shark_75_approx: rgba(28, 33, 38, 0.75);
+$color_athens_gray_15_approx: rgba(244, 246, 249, 0.15);
+$color_mariner_10_approx: rgba(32, 122, 183, 0.1);
+$black_25: rgba(0, 0, 0, 0.25);
+$web_orange: orange;
+$color_japanese_laurel_approx: green;
+$color_athens_gray_20_approx: rgba(244, 246, 249, 0.2);
+$white_25: rgba(255, 255, 255, 0.25);
+$color_athens_gray_85_approx: rgba(244, 246, 249, 0.85);
+$color_woodsmoke_approx: #111417;
+$color_dove_gray_approx: #666;
+$color_kidnapper_approx: #e4eeda;
+$color_chalet_green_approx: #547831;
+$color_pot_pourri_approx: #f8dede;
+$color_beauty_bush_approx: #f2bfbf;
+$color_early_dawn_approx: #fffaea;
+$color_cream_brulee_approx: #ffe89d;
+$color_link_water_approx: #d9edf7;
+$color_polo_blue_approx: #779ecb;
+$color_dodger_blue_approx: #4099ff;
+$color_shark_60_approx: rgba(28, 33, 38, 0.6);
+$color_mirage_75_approx: rgba(23, 28, 37, 0.75);
+$black_50: rgba(0, 0, 0, 0.5);
+
+//urls
+$url_0: url(data:image/gif;base64,R0lGODdhDAAMAIABAMzMzP///ywAAAAADAAMAAACFoQfqYeabNyDMkBQb81Uat85nxguUAEAOw==);
+$url_1: url("data:image/svg+xml;charset=utf8,%3Csvg height='39px' viewBox='0 0 40 39px' width='40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='38px' width='100' height='1' fill='%236e737a'/%3E%3C/svg%3E");
+
+//@extend-elements
+//original selectors
+//.tox .tox-collection__item-icon, .tox .tox-collection__item-checkmark
+%extend_1 {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    width: 24px;
+}
+
+
+.tox {
+    &:not([dir=rtl]) {
+        .tox-dialog__body-content {
+            .accessibility-issue__header {
+                .tox-button {
+                    margin-left: 4px;
+                }
+                > *:nth-last-child(2) {
+                    margin-left: auto;
+                }
+            }
+            .accessibility-issue__description {
+                padding: 4px 4px 4px 8px;
+                > *:last-child {
+                    border-left-width: 1px;
+                    padding-left: 4px;
+                }
+            }
+        }
+        .tox-checkbox__label {
+            margin-left: 4px;
+        }
+        .tox-checkbox__input {
+            left: -10000px;
+        }
+        .tox-collection__item-accessory {
+            margin-left: 16px;
+            text-align: right;
+        }
+        .tox-sv-palette {
+            margin-right: 15px;
+        }
+        .tox-hue-slider {
+            margin-right: 15px;
+        }
+        .tox-hue-slider-thumb {
+            margin-left: -1px;
+        }
+        .tox-swatches__picker-btn {
+            margin-left: auto;
+        }
+        .tox-comment__edit {
+            margin-left: 8px;
+            > *:last-child {
+                margin-left: 8px;
+            }
+        }
+        .tox-user__avatar {
+            svg {
+                margin-right: 8px;
+            }
+            + .tox-user__name {
+                margin-left: 8px;
+            }
+        }
+        .tox-dialog__footer {
+            .tox-dialog__footer-start > * {
+                margin-left: 8px;
+            }
+            .tox-dialog__footer-end > * {
+                margin-left: 8px;
+            }
+        }
+        .tox-control-wrap__status-icon-wrap {
+            right: 4px;
+        }
+        .tox-color-input {
+            .tox-textfield {
+                padding-left: 36px;
+            }
+            span {
+                left: 6px;
+            }
+        }
+        .tox-selectfield {
+            select[size="0"] {
+                padding-right: 24px;
+            }
+            select[size="1"] {
+                padding-right: 24px;
+            }
+            svg {
+                right: 8px;
+            }
+        }
+        .tox-statusbar__branding {
+            margin-left: 1ch;
+        }
+        .tox-bar .tox-checkbox {
+            margin-left: 4px;
+        }
+        .tox-collection--horizontal .tox-collection__group:not(:last-of-type) {
+            border-right: 1px solid $color_pale_sky_approx;
+        }
+        .tox-collection--list .tox-collection__item {
+            > *:not(:first-child) {
+                margin-left: 8px;
+            }
+            > .tox-collection__item-label:first-child {
+                margin-left: 4px;
+            }
+        }
+        .tox-collection .tox-collection__item-caret {
+            margin-left: 16px;
+        }
+        .tox-rgb-form label {
+            margin-right: 0.5em;
+        }
+        .tox-comment__buttonspacing > *:last-child {
+            margin-left: 8px;
+        }
+        .tox-comment__reply > *:last-child {
+            margin-left: 8px;
+        }
+        .tox-control-wrap--status-invalid .tox-textfield {
+            padding-right: 32px;
+        }
+        .tox-control-wrap--status-unknown .tox-textfield {
+            padding-right: 32px;
+        }
+        .tox-control-wrap--status-valid .tox-textfield {
+            padding-right: 32px;
+        }
+        .tox-form__controls-h-stack > *:not(:first-child) {
+            margin-left: 4px;
+        }
+        .tox-toolbar-textfield + * {
+            margin-left: 4px;
+        }
+        .tox-listboxfield svg {
+            right: 8px;
+        }
+        .tox-image-tools__toolbar > {
+            .tox-slider {
+                &:not(:first-of-type) {
+                    margin-left: 8px;
+                }
+                + .tox-button {
+                    margin-left: 32px;
+                }
+            }
+            .tox-button + .tox-slider {
+                margin-left: 32px;
+            }
+        }
+        .tox-insert-table-picker > div:nth-child(10n) {
+            border-right: 0;
+        }
+        .tox-spinner > div:not(:first-child) {
+            margin-left: 4px;
+        }
+        .tox-statusbar__path > * {
+            margin-right: 4px;
+        }
+        .tox-toolbar__group:not(:last-of-type) {
+            border-right: 1px solid $color_pale_sky_approx;
+        }
+    }
+    .accessibility-issue__header {
+        align-items: center;
+        display: flex;
+        margin-bottom: 4px;
+    }
+    .accessibility-issue__description {
+        align-items: stretch;
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        > div {
+            padding-bottom: 4px;
+            > div {
+                align-items: center;
+                display: flex;
+                margin-bottom: 4px;
+            }
+        }
+        > *:last-child:not(:only-child) {
+            border-color: $color_pale_sky_approx;
+            border-style: solid;
+        }
+    }
+    .accessibility-issue__repair {
+        margin-top: 16px;
+    }
+    .tox-dialog__body-content {
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        max-height: 650px;
+        overflow: auto;
+        padding: 16px;
+        .accessibility-issue--info {
+            .accessibility-issue__description {
+                background-color: $color_mariner_50_approx;
+                border-color: $color_mariner_approx;
+                color: var(--editor-text-main);
+                > *:last-child {
+                    border-color: $color_mariner_approx;
+                }
+            }
+            .tox-form__group h2 {
+                color: $color_mariner_approx;
+            }
+            .tox-icon svg {
+                fill: $color_mariner_approx;
+            }
+            a .tox-icon {
+                color: $color_mariner_approx;
+            }
+        }
+        .accessibility-issue--warn {
+            .accessibility-issue__description {
+                background-color: $web_orange_50;
+                border-color: $web_orange_80;
+                color: var(--editor-text-main);
+                > *:last-child {
+                    border-color: $web_orange_80;
+                }
+            }
+            .tox-form__group h2 {
+                color: $color_pirate_gold_approx;
+            }
+            .tox-icon svg {
+                fill: $color_pirate_gold_approx;
+            }
+            a .tox-icon {
+                color: $color_pirate_gold_approx;
+            }
+        }
+        .accessibility-issue--error {
+            .accessibility-issue__description {
+                background-color: $color_guardsman_red_50_approx;
+                border-color: $color_guardsman_red_80_approx;
+                color: var(--editor-text-main);
+                > *:last-child {
+                    border-color: $color_guardsman_red_80_approx;
+                }
+            }
+            .tox-form__group h2 {
+                color: $color_guardsman_red_approx;
+            }
+            .tox-icon svg {
+                fill: $color_guardsman_red_approx;
+            }
+            a .tox-icon {
+                color: $color_guardsman_red_approx;
+            }
+        }
+        .accessibility-issue--success {
+            .accessibility-issue__description {
+                background-color: $color_sushi_50_approx;
+                border-color: $color_sushi_80_approx;
+                color: var(--editor-text-main);
+                > *:last-child {
+                    border-color: $color_sushi_80_approx;
+                }
+            }
+            .tox-form__group h2 {
+                color: $color_sushi_approx;
+            }
+            .tox-icon svg {
+                fill: $color_sushi_approx;
+            }
+            a .tox-icon {
+                color: $color_sushi_approx;
+            }
+        }
+        .tox-form__group {
+            h1 {
+                color: var(--editor-text-main);
+                font-size: 20px;
+                font-style: normal;
+                font-weight: bold;
+                letter-spacing: normal;
+                margin-bottom: 16px;
+                margin-top: 2rem;
+                text-transform: none;
+                &:first-child {
+                    margin-top: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:only-child {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+            h2 {
+                color: var(--editor-text-main);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: bold;
+                letter-spacing: normal;
+                margin-bottom: 16px;
+                margin-top: 2rem;
+                text-transform: none;
+                &:first-child {
+                    margin-top: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:only-child {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+            p {
+                margin-bottom: 16px;
+                &:first-child {
+                    margin-top: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:only-child {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+            .accessibility-issue__description h2 {
+                margin-top: 0;
+            }
+        }
+        > * {
+            margin-bottom: 0;
+            margin-top: 16px;
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:only-child {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+        }
+        a {
+            color: $color_mariner_approx;
+            cursor: pointer;
+            text-decoration: none;
+            &:hover {
+                color: $color_matisse_approx;
+                text-decoration: none;
+            }
+            &:focus {
+                color: $color_matisse_approx;
+                text-decoration: none;
+            }
+            &:active {
+                color: $color_matisse_approx;
+                text-decoration: none;
+            }
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-bottom: 16px;
+            margin-inline-end: 0;
+            margin-inline-start: 0;
+            padding-inline-start: 2.5rem;
+        }
+        .tox-collection {
+            display: flex;
+            flex: 1;
+        }
+        .accessibility-issue__header h1 {
+            margin-top: 0;
+        }
+    }
+    .tox-anchorbar {
+        display: flex;
+        flex: 0 0 auto;
+    }
+    .tox-bar {
+        display: flex;
+        flex: 0 0 auto;
+    }
+    .tox-button {
+        background-color: $color_mariner_approx;
+        background-image: none;
+        background-position: 0 0;
+        background-repeat: repeat;
+        border-color: $color_mariner_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        color: var(--editor-button-color);
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: bold;
+        letter-spacing: normal;
+        line-height: 24px;
+        margin: 0;
+        outline: none;
+        padding: 4px 16px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+        white-space: nowrap;
+        &.tox-button--icon {
+            padding: 4px;
+            .tox-icon svg {
+                display: block;
+                fill: currentColor;
+            }
+        }
+        &:focus:not(:disabled) {
+            background-color: $color_matisse_approx;
+            background-image: none;
+            border-color: $color_matisse_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-button-color);
+        }
+        &:hover:not(:disabled) {
+            background-color: $color_matisse_approx;
+            background-image: none;
+            border-color: $color_matisse_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-button-color);
+        }
+        &:active:not(:disabled) {
+            background-color: $color_matisse_approx;
+            background-image: none;
+            border-color: $color_matisse_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color:var(--editor-button-color);
+        }
+        &.tox-button--secondary.tox-button--icon {
+            padding: 4px;
+            .tox-icon svg {
+                display: block;
+                fill: currentColor;
+            }
+        }
+    }
+    .tox-button[disabled] {
+        background-color: $color_mariner_approx;
+        background-image: none;
+        border-color: $color_mariner_approx;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-button-color);
+        cursor: not-allowed;
+    }
+    .tox-button--secondary {
+        background-color: $color_oxford_blue_approx;
+        background-image: none;
+        background-position: 0 0;
+        background-repeat: repeat;
+        border-color: $color_oxford_blue_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-button-color);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: bold;
+        letter-spacing: normal;
+        outline: none;
+        padding: 4px 16px;
+        text-decoration: none;
+        text-transform: none;
+        &:focus:not(:disabled) {
+            background-color: $color_limed_spruce_approx;
+            background-image: none;
+            border-color: $color_limed_spruce_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-button-color);
+        }
+        &:hover:not(:disabled) {
+            background-color: $color_limed_spruce_approx;
+            background-image: none;
+            border-color: $color_limed_spruce_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-button-color);
+        }
+        &:active:not(:disabled) {
+            background-color: var(--editor-toolbar-bg);
+            background-image: none;
+            border-color: var(--editor-toolbar-bg);
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-button-color);
+        }
+    }
+    .tox-button--secondary[disabled] {
+        background-color: $color_oxford_blue_approx;
+        background-image: none;
+        border-color: $color_oxford_blue_approx;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-button-color);
+    }
+    .tox-button--icon {
+        padding: 4px;
+        .tox-icon svg {
+            display: block;
+            fill: currentColor;
+        }
+    }
+    .tox-button-link {
+        background: 0;
+        border: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.3;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+    .tox-button-link--sm {
+        font-size: 14px;
+    }
+    .tox-button--naked {
+        background-color: transparent;
+        border-color: transparent;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: unset;
+        color: var(--editor-text-main);
+        &:hover:not(:disabled) {
+            background-color: $color_limed_spruce_approx;
+            border-color: $color_limed_spruce_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+        &:focus:not(:disabled) {
+            background-color: $color_limed_spruce_approx;
+            border-color: $color_limed_spruce_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+        &:active:not(:disabled) {
+            background-color: var(--editor-toolbar-bg);
+            border-color: var(--editor-toolbar-bg);
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+        .tox-icon svg {
+            fill: currentColor;
+        }
+        &.tox-button--icon:hover:not(:disabled) {
+            color: var(--editor-text-main);
+        }
+    }
+    .tox-button--naked[disabled] {
+        background-color: $color_oxford_blue_approx;
+        border-color: $color_oxford_blue_approx;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-disabled);
+    }
+    .tox-checkbox {
+        align-items: center;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        height: 36px;
+        min-width: 36px;
+    }
+    .tox-checkbox__input {
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        top: auto;
+        width: 1px;
+    }
+    .tox-checkbox__icons {
+        align-items: center;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 0 0 2px transparent;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: content-box;
+        display: flex;
+        height: 24px;
+        justify-content: center;
+        padding: calc(4px - 1px);
+        width: 24px;
+        .tox-checkbox-icon__unchecked svg {
+            display: block;
+            fill: $color_athens_gray_30_approx;
+        }
+        .tox-checkbox-icon__indeterminate svg {
+            display: none;
+            fill: $color_mariner_approx;
+        }
+        .tox-checkbox-icon__checked svg {
+            display: none;
+            fill: $color_mariner_approx;
+        }
+    }
+    .tox-checkbox--disabled {
+        color: var(--editor-text-disabled);
+        cursor: not-allowed;
+        .tox-checkbox__icons {
+            .tox-checkbox-icon__checked svg {
+                fill: var(--editor-text-disabled);
+            }
+            .tox-checkbox-icon__unchecked svg {
+                fill: var(--editor-text-disabled);
+            }
+            .tox-checkbox-icon__indeterminate svg {
+                fill: var(--editor-text-disabled);
+            }
+        }
+    }
+    .tox-collection--toolbar {
+        .tox-collection__group {
+            display: flex;
+            padding: 0;
+        }
+        .tox-collection__item {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            padding: 4px;
+        }
+        .tox-collection__item--enabled {
+            background-color: var(--editor-toolbar-bg);
+            color: var(--editor-text-main);
+        }
+        .tox-collection__item--active {
+            background-color: var(--editor-content-bg);
+            &:not(.tox-collection__item--state-disabled) {
+                color: var(--editor-text-main);
+            }
+        }
+    }
+    .tox-collection--grid {
+        .tox-collection__group {
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 208px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 0;
+        }
+        .tox-collection__item {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            padding: 4px;
+        }
+        .tox-collection__item--enabled {
+            background-color: var(--editor-toolbar-bg);
+            color: var(--editor-text-main);
+        }
+        .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+            background-color: var(--editor-content-bg);
+            color: var(--editor-text-main);
+        }
+    }
+    .tox-collection--list {
+        .tox-collection__group {
+            border-bottom-width: 0;
+            border-color: $color_oslo_gray_approx;
+            border-left-width: 0;
+            border-right-width: 0;
+            border-style: solid;
+            border-top-width: 1px;
+            padding: 4px 0;
+            &:first-child {
+                border-top-width: 0;
+            }
+            .tox-swatches-menu {
+                border: 0;
+                margin: -4px 0;
+            }
+            .tox-insert-table-picker {
+                margin: -4px 0;
+            }
+        }
+        .tox-collection__item {
+            padding: 4px 8px;
+            &:not(.tox-collection__item--enabled) {
+                .tox-collection__item-checkmark svg {
+                    display: none;
+                }
+                .tox-collection__item-accessory + .tox-collection__item-checkmark {
+                    display: none;
+                }
+            }
+        }
+        .tox-collection__item--enabled {
+            background-color: var(--editor-toolbar-bg);
+            color: var(--editor-text-main);
+        }
+        .tox-collection__item--active {
+            background-color: var(--editor-content-bg);
+            &:not(.tox-collection__item--state-disabled) {
+                color: var(--editor-text-main);
+            }
+        }
+    }
+    .tox-collection__group-heading {
+        background-color: $color_gray_chateau_approx;
+        color:  var(--editor-text);
+        cursor: default;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: normal;
+        margin-bottom: 4px;
+        margin-top: -4px;
+        padding: 4px 8px;
+        text-transform: none;
+        //Instead of the line below you could use @include user-select($select)
+        user-select: none;
+    }
+    .tox-collection__item {
+        align-items: center;
+        color: var(--editor-text-main);
+        cursor: pointer;
+        display: flex;
+        //Instead of the line below you could use @include user-select($select)
+        user-select: none;
+    }
+    .tox-collection__item--state-disabled {
+        background-color: transparent;
+        color: var(--editor-text-disabled);
+        cursor: not-allowed;
+    }
+    .tox-collection__item-icon {
+        @extend %extend_1;
+        svg {
+            fill: currentColor;
+        }
+    }
+    .tox-collection__item-checkmark {
+        @extend %extend_1;
+        svg {
+            fill: currentColor;
+        }
+    }
+    .tox-collection__item-label {
+        color: currentColor;
+        display: inline-block;
+        flex: 1;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 24px;
+        text-transform: none;
+        //Instead of the line below you could use @include word-break($value)
+        word-break: break-all;
+    }
+    .tox-collection__item-accessory {
+        color:  var(--editor-text);
+        display: inline-block;
+        font-size: 14px;
+        height: 24px;
+        line-height: 24px;
+        text-transform: none;
+    }
+    .tox-collection__item-caret {
+        align-items: center;
+        display: flex;
+        min-height: 24px;
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-collection__item-caret::after {
+        content: '';
+        font-size: 0;
+        min-height: inherit;
+    }
+    .tox-collection--horizontal {
+        background-color: var(--editor-toolbar-bg);
+        border: 1px solid $color_oslo_gray_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 1px 3px $black_15;
+        display: flex;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        flex-wrap: nowrap;
+        margin-bottom: 0;
+        overflow-x: auto;
+        padding: 0;
+        .tox-collection__group {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            margin: 0;
+            padding: 0 4px;
+        }
+        .tox-collection__item {
+            height: 34px;
+            margin: 2px 0 3px;
+            padding: 0 4px;
+        }
+        .tox-collection__item-label {
+            white-space: nowrap;
+        }
+        .tox-collection__item-caret {
+            margin-left: 4px;
+        }
+    }
+    .tox-collection__item-container {
+        display: flex;
+    }
+    .tox-collection__item-container--row {
+        align-items: center;
+        flex: 1 1 auto;
+        flex-direction: row;
+        &.tox-collection__item-container--align-left {
+            margin-right: auto;
+        }
+        &.tox-collection__item-container--align-right {
+            justify-content: flex-end;
+            margin-left: auto;
+        }
+        &.tox-collection__item-container--valign-top {
+            align-items: flex-start;
+            margin-bottom: auto;
+        }
+        &.tox-collection__item-container--valign-middle {
+            align-items: center;
+        }
+        &.tox-collection__item-container--valign-bottom {
+            align-items: flex-end;
+            margin-top: auto;
+        }
+    }
+    .tox-collection__item-container--column {
+        align-self: center;
+        flex: 1 1 auto;
+        flex-direction: column;
+        &.tox-collection__item-container--align-left {
+            align-items: flex-start;
+        }
+        &.tox-collection__item-container--align-right {
+            align-items: flex-end;
+        }
+        &.tox-collection__item-container--valign-top {
+            align-self: flex-start;
+        }
+        &.tox-collection__item-container--valign-middle {
+            align-self: center;
+        }
+        &.tox-collection__item-container--valign-bottom {
+            align-self: flex-end;
+        }
+    }
+    .tox-color-picker-container {
+        display: flex;
+        flex-direction: row;
+        height: 225px;
+        margin: 0;
+    }
+    .tox-sv-palette {
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
+        width: 225px;
+    }
+    .tox-sv-palette-spectrum {
+        height: 100%;
+        width: 225px;
+    }
+    .tox-sv-palette-thumb {
+        background: none;
+        border: 1px solid $black;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        width: 12px;
+    }
+    .tox-sv-palette-inner-thumb {
+        border: 1px solid var(--editor-white);
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        height: 10px;
+        position: absolute;
+        width: 10px;
+    }
+    .tox-hue-slider {
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        height: 100%;
+        width: 25px;
+        width: 20px;
+    }
+    .tox-hue-slider-spectrum {
+        background: linear-gradient(to bottom, $red, $color_rose_approx, $magenta_fuchsia, $color_electric_violet_approx, $blue, $color_azure_radiance_approx, $cyan_aqua, $bluef80, $green, $color_chartreuse_approx, $yellow, $color_flush_orange_approx, $red);
+        height: 100%;
+        width: 100%;
+        width: 20px;
+    }
+    .tox-hue-slider-thumb {
+        background: var(--editor-white);
+        border: 1px solid $black;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: content-box;
+        height: 4px;
+        width: 100%;
+    }
+    .tox-rgb-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            width: inherit;
+        }
+        input {
+            width: 6em;
+            &.tox-invalid {
+                border: 1px solid $red !important;
+            }
+        }
+        .tox-rgba-preview {
+            border: 1px solid $black;
+            flex-grow: 2;
+            margin-bottom: 0;
+        }
+    }
+    .tox-toolbar {
+        background: $url_1 left 0 top 0 var(--editor-toolbar-bg);
+        background-color: var(--editor-toolbar-bg);
+        display: flex;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        padding: 0;
+        .tox-swatches {
+            margin: 2px 0 3px 4px;
+        }
+    }
+    .tox-toolbar__primary {
+        background: $url_1 left 0 top 0 var(--editor-toolbar-bg);
+        background-color: var(--editor-toolbar-bg);
+        display: flex;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        padding: 0;
+        .tox-swatches {
+            margin: 2px 0 3px 4px;
+        }
+    }
+    .tox-toolbar__overflow {
+        background: $url_1 left 0 top 0 var(--editor-toolbar-bg);
+        background-color: var(--editor-toolbar-bg);
+        display: flex;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        padding: 0;
+        .tox-swatches {
+            margin: 2px 0 3px 4px;
+        }
+        &.tox-toolbar__overflow--closed {
+            height: 0;
+            opacity: 0;
+            padding-bottom: 0;
+            padding-top: 0;
+            visibility: hidden;
+        }
+    }
+    .tox-swatches__row {
+        display: flex;
+    }
+    .tox-swatch {
+        height: 30px;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: transform 0.15s, box-shadow 0.15s;
+        width: 30px;
+        &:hover {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 0 1px $color_gray_30_approx inset;
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: scale(0.8);
+        }
+        &:focus {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 0 1px $color_gray_30_approx inset;
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: scale(0.8);
+        }
+    }
+    .tox-swatch--remove {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        svg path {
+            stroke: $color_cinnabar_approx;
+        }
+    }
+    .tox-swatches__picker-btn {
+        align-items: center;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        display: flex;
+        height: 30px;
+        justify-content: center;
+        outline: none;
+        padding: 0;
+        width: 30px;
+        svg {
+            height: 24px;
+            width: 24px;
+        }
+        &:hover {
+            background: var(--editor-content-bg);
+        }
+    }
+    .tox-comment-thread {
+        background: var(--editor-toolbar-bg);
+        position: relative;
+        > *:not(:first-child) {
+            margin-top: 8px;
+        }
+    }
+    .tox-comment {
+        background: var(--editor-toolbar-bg);
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 4px 8px 0 $color_athens_gray_10_approx;
+        padding: 8px 8px 16px 8px;
+        position: relative;
+    }
+    .tox-comment__header {
+        align-items: center;
+        color: var(--editor-text-main);
+        display: flex;
+        justify-content: space-between;
+    }
+    .tox-comment__date {
+        color:  var(--editor-text);
+        font-size: 12px;
+    }
+    .tox-comment__body {
+        color: var(--editor-text-main);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.3;
+        margin-top: 8px;
+        position: relative;
+        text-transform: initial;
+        textarea {
+            resize: none;
+            white-space: normal;
+            width: 100%;
+        }
+        p {
+            margin: 0;
+        }
+    }
+    .tox-comment__expander {
+        padding-top: 8px;
+        p {
+            color:  var(--editor-text);
+            font-size: 14px;
+            font-style: normal;
+        }
+    }
+    .tox-comment__buttonspacing {
+        padding-top: 16px;
+        text-align: center;
+    }
+    .tox-comment-thread__overlay::after {
+        background: var(--editor-toolbar-bg);
+        bottom: 0;
+        content: "";
+        display: flex;
+        left: 0;
+        opacity: 0.9;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 5;
+    }
+    .tox-comment__reply {
+        display: flex;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-top: 8px;
+        > *:first-child {
+            margin-bottom: 8px;
+            width: 100%;
+        }
+    }
+    .tox-comment__edit {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-top: 16px;
+    }
+    .tox-comment__gradient::after {
+        background: linear-gradient(rgba(39, 46, 53, 0), $color_shark_approx);
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 5em;
+        margin-top: -40px;
+        position: absolute;
+        width: 100%;
+    }
+    .tox-comment__overlay {
+        background: var(--editor-toolbar-bg);
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        left: 0;
+        opacity: 0.9;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        z-index: 5;
+    }
+    .tox-comment__loading-text {
+        align-items: center;
+        color: var(--editor-text-main);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        > div {
+            padding-bottom: 16px;
+        }
+    }
+    .tox-comment__overlaytext {
+        bottom: 0;
+        flex-direction: column;
+        font-size: 14px;
+        left: 0;
+        padding: 1em;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 10;
+        p {
+            background-color: var(--editor-toolbar-bg);
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 8px 8px var(--editor-toolbar-bg);
+            color: var(--editor-text-main);
+            text-align: center;
+        }
+        div:nth-of-type(2) {
+            font-size: 0.8em;
+        }
+    }
+    .tox-comment__busy-spinner {
+        align-items: center;
+        background-color: var(--editor-toolbar-bg);
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 20;
+    }
+    .tox-comment__scroll {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+        overflow: auto;
+    }
+    .tox-conversations {
+        margin: 8px;
+    }
+    .tox-user {
+        align-items: center;
+        display: flex;
+    }
+    .tox-user__name {
+        color:  var(--editor-text);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .tox-dialog-wrap {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 1100;
+    }
+    .tox-dialog-wrap__backdrop {
+        background-color: $color_shark_75_approx;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+    .tox-dialog-wrap__backdrop--opaque {
+        background-color: var(--editor-toolbar-bg);
+    }
+    .tox-dialog {
+        background-color: var(--editor-toolbar-bg);
+        border-color: $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 16px 16px -10px $color_athens_gray_15_approx, 0 0 40px 1px $color_athens_gray_15_approx;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        max-width: 480px;
+        overflow: hidden;
+        position: relative;
+        width: 95vw;
+        z-index: 2;
+    }
+    .tox-dialog-inline {
+        z-index: 1100;
+    }
+    .tox-dialog__header {
+        align-items: center;
+        background-color: var(--editor-toolbar-bg);
+        border-bottom: none;
+        color: var(--editor-text-main);
+        display: flex;
+        font-size: 16px;
+        justify-content: space-between;
+        padding: 8px 16px 0;
+        position: relative;
+        .tox-button {
+            z-index: 1;
+        }
+    }
+    .tox-dialog__draghandle {
+        cursor: grab;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        &:active {
+            cursor: grabbing;
+        }
+    }
+    .tox-dialog__dismiss {
+        margin-left: auto;
+    }
+    .tox-dialog__title {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.3;
+        margin: 0;
+        text-transform: none;
+    }
+    .tox-dialog__body {
+        color: var(--editor-text-main);
+        display: flex;
+        flex: 1;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.3;
+        min-width: 0;
+        text-align: left;
+        text-transform: none;
+    }
+    .tox-dialog__body-nav {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+    }
+    .tox-dialog__body-nav-item {
+        border-bottom: 2px solid transparent;
+        color:  var(--editor-text);
+        display: inline-block;
+        font-size: 14px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        &:focus {
+            background-color: $color_mariner_10_approx;
+        }
+    }
+    .tox-dialog__body-nav-item--active {
+        border-bottom: 2px solid $color_mariner_approx;
+        color: $color_mariner_approx;
+    }
+    .tox-dialog--width-lg {
+        height: 650px;
+        max-width: 1200px;
+    }
+    .tox-dialog--width-md {
+        max-width: 800px;
+        .tox-dialog__body-content {
+            overflow: auto;
+        }
+    }
+    .tox-dialog__body-content--centered {
+        text-align: center;
+    }
+    .tox-dialog__footer {
+        align-items: center;
+        background-color: var(--editor-toolbar-bg);
+        border-top: 1px solid $color_pale_sky_approx;
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 16px;
+    }
+    .tox-dialog__footer-start {
+        display: flex;
+    }
+    .tox-dialog__footer-end {
+        display: flex;
+    }
+    .tox-dialog__busy-spinner {
+        align-items: center;
+        background-color: $color_shark_75_approx;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 3;
+    }
+    .tox-dialog__table {
+        border-collapse: collapse;
+        width: 100%;
+        td {
+            padding-bottom: 8px;
+            padding-top: 8px;
+        }
+        thead th {
+            font-weight: bold;
+            padding-bottom: 8px;
+        }
+        tbody tr {
+            border-bottom: 1px solid $color_pale_sky_approx;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+    .tox-dialog__popups {
+        position: absolute;
+        width: 100%;
+        z-index: 1100;
+    }
+    .tox-dialog__body-iframe {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        .tox-navobj {
+            display: flex;
+            flex: 1;
+            :nth-child(2) {
+                flex: 1;
+                height: 100%;
+            }
+        }
+    }
+    .tox-dialog-dock-fadeout {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .tox-dialog-dock-fadein {
+        opacity: 1;
+        visibility: visible;
+    }
+    .tox-dialog-dock-transition {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+        &.tox-dialog-dock-fadein {
+            //Instead of the line below you could use @include transition-delay($delay-1, $delay-2, $delay-3, $delay-4, $delay-5, $delay-6, $delay-7, $delay-8, $delay-9, $delay-10)
+            transition-delay: 0s;
+        }
+    }
+    .tox-dropzone-container {
+        display: flex;
+        flex: 1;
+    }
+    .tox-dropzone {
+        align-items: center;
+        background: var(--editor-white);
+        border: 2px dashed $color_pale_sky_approx;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        min-height: 100px;
+        padding: 10px;
+        p {
+            color:  var(--editor-text);
+            margin: 0 0 16px 0;
+        }
+    }
+    .tox-edit-area {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+    }
+    .tox-edit-area__iframe {
+        background-color: var(--editor-content-bg);
+        border: 0;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        flex: 1;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+    &.tox-inline-edit-area {
+        border: 1px dotted $color_pale_sky_approx;
+    }
+    .tox-editor-container {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .tox-editor-header {
+        z-index: 1;
+    }
+    .tox-control-wrap {
+        flex: 1;
+        position: relative;
+        &:not(&.tox-control-wrap--status-invalid) .tox-control-wrap__status-icon-invalid {
+            display: none;
+        }
+        &.tox-control-wrap--status-unknown .tox-control-wrap__status-icon-unknown {
+            display: none;
+        }
+        &.tox-control-wrap--status-valid .tox-control-wrap__status-icon-valid {
+            display: none;
+        }
+        svg {
+            display: block;
+        }
+    }
+    .tox-control-wrap__status-icon-wrap {
+        position: absolute;
+        top: 50%;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateY(-50%);
+    }
+    .tox-autocompleter {
+        max-width: 25em;
+        .tox-menu {
+            max-width: 25em;
+        }
+        .tox-autocompleter-highlight {
+            font-weight: bold;
+        }
+    }
+    .tox-color-input {
+        display: flex;
+        position: relative;
+        z-index: 1;
+        .tox-textfield {
+            z-index: -1;
+        }
+        span {
+            border-color: $color_athens_gray_20_approx;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            border-style: solid;
+            border-width: 1px;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            height: 24px;
+            position: absolute;
+            top: 6px;
+            width: 24px;
+            &:hover:not([aria-disabled=true]) {
+                border-color: $color_mariner_approx;
+                cursor: pointer;
+            }
+            &:focus:not([aria-disabled=true]) {
+                border-color: $color_mariner_approx;
+                cursor: pointer;
+            }
+        }
+        span::before {
+            background-image: linear-gradient(45deg, $white_25 25%, transparent 25%), linear-gradient(-45deg, $white_25 25%, transparent 25%), linear-gradient(45deg, transparent 75%, $white_25 75%), linear-gradient(-45deg, transparent 75%, $white_25 75%);
+            background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+            background-size: 12px 12px;
+            border: 1px solid var(--editor-toolbar-bg);
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            content: '';
+            height: 24px;
+            left: -1px;
+            position: absolute;
+            top: -1px;
+            width: 24px;
+            z-index: -1;
+        }
+        span[aria-disabled=true] {
+            cursor: not-allowed;
+        }
+    }
+    .tox-label {
+        color:  var(--editor-text);
+        display: block;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.3;
+        padding: 0 8px 0 0;
+        text-transform: none;
+        white-space: nowrap;
+    }
+    .tox-toolbar-label {
+        color:  var(--editor-text);
+        display: block;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.3;
+        padding: 0 8px 0 0;
+        text-transform: none;
+        white-space: nowrap;
+        padding: 0 8px;
+    }
+    .tox-form {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .tox-form__group {
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        margin-bottom: 4px;
+    }
+    .tox-form-group--maximize {
+        flex: 1;
+    }
+    .tox-form__group--error {
+        color: $color_guardsman_red_approx;
+    }
+    .tox-form__group--collection {
+        display: flex;
+    }
+    .tox-form__grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .tox-form__controls-h-stack {
+        align-items: center;
+        display: flex;
+    }
+    .tox-form__group--inline {
+        align-items: center;
+        display: flex;
+    }
+    .tox-form__group--stretched {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        .tox-textarea {
+            flex: 1;
+        }
+        .tox-navobj {
+            display: flex;
+            flex: 1;
+            :nth-child(2) {
+                flex: 1;
+                height: 100%;
+            }
+        }
+    }
+    .tox-lock {
+        &.tox-locked .tox-lock-icon__unlock {
+            display: none;
+        }
+        &:not(.tox-locked) .tox-lock-icon__lock {
+            display: none;
+        }
+    }
+    .tox-textfield {
+        appearance: none;
+        background-color: var(--editor-toolbar-bg);
+        border-color: $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        color: var(--editor-text-main);
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        min-height: 34px;
+        outline: none;
+        padding: 5px 4.75px;
+        resize: none;
+        width: 100%;
+        &:focus {
+            background-color: var(--editor-toolbar-bg);
+            border-color: $color_mariner_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            outline: none;
+        }
+    }
+    .tox-toolbar-textfield {
+        appearance: none;
+        background-color: var(--editor-toolbar-bg);
+        border-color: $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        color: var(--editor-text-main);
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        min-height: 34px;
+        outline: none;
+        padding: 5px 4.75px;
+        resize: none;
+        width: 100%;
+        border-width: 0;
+        margin-bottom: 3px;
+        margin-top: 2px;
+        max-width: 250px;
+    }
+    .tox-listboxfield {
+        cursor: pointer;
+        position: relative;
+        .tox-listbox--select {
+            appearance: none;
+            background-color: var(--editor-toolbar-bg);
+            border-color: $color_pale_sky_approx;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            border-style: solid;
+            border-width: 1px;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            color: var(--editor-text-main);
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+            min-height: 34px;
+            outline: none;
+            padding: 5px 4.75px;
+            resize: none;
+            width: 100%;
+            align-items: center;
+            display: flex;
+            &:focus {
+                background-color: var(--editor-toolbar-bg);
+                border-color: $color_mariner_approx;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                outline: none;
+            }
+        }
+        .tox-listbox--select[disabled] {
+            background-color: $color_woodsmoke_approx;
+            color: $color_athens_gray_85_approx;
+            cursor: not-allowed;
+        }
+    }
+    .tox-textarea {
+        appearance: none;
+        background-color: var(--editor-toolbar-bg);
+        border-color: $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        color: var(--editor-text-main);
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        min-height: 34px;
+        outline: none;
+        padding: 5px 4.75px;
+        resize: none;
+        width: 100%;
+        appearance: auto;
+        white-space: pre-wrap;
+        &:focus {
+            background-color: var(--editor-toolbar-bg);
+            border-color: $color_mariner_approx;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            outline: none;
+        }
+    }
+    .tox-textfield[disabled] {
+        background-color: var(--editor-toolbar-bg);
+        color: $color_athens_gray_85_approx;
+        cursor: not-allowed;
+    }
+    .tox-textarea[disabled] {
+        background-color: var(--editor-toolbar-bg);
+        color: $color_athens_gray_85_approx;
+        cursor: not-allowed;
+    }
+    .tox-naked-btn {
+        background-color: transparent;
+        border: 0;
+        border-color: transparent;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: unset;
+        color: $color_mariner_approx;
+        cursor: pointer;
+        display: block;
+        margin: 0;
+        padding: 0;
+        svg {
+            display: block;
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-listbox__select-label {
+        cursor: default;
+        flex: 1;
+        margin: 0 4px;
+    }
+    .tox-listbox__select-chevron {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 16px;
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-selectfield {
+        cursor: pointer;
+        position: relative;
+        select {
+            appearance: none;
+            background-color: var(--editor-toolbar-bg);
+            border-color: $color_pale_sky_approx;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            border-style: solid;
+            border-width: 1px;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            color: var(--editor-text-main);
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+            min-height: 34px;
+            outline: none;
+            padding: 5px 4.75px;
+            resize: none;
+            width: 100%;
+            &:focus {
+                background-color: var(--editor-toolbar-bg);
+                border-color: $color_mariner_approx;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                outline: none;
+            }
+        }
+        select[disabled] {
+            background-color: $color_woodsmoke_approx;
+            color: $color_athens_gray_85_approx;
+            cursor: not-allowed;
+        }
+        select::-ms-expand {
+            display: none;
+        }
+        svg {
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-50%);
+        }
+    }
+    &.tox-tinymce {
+        &.tox-fullscreen {
+            background-color: transparent;
+            z-index: 1200;
+            .tox-statusbar__resize-handle {
+                display: none;
+            }
+        }
+        &:not(.tox-tinymce-inline) .tox-editor-header:not(:first-child) .tox-menubar {
+            border-top: 1px solid $color_pale_sky_approx;
+        }
+    }
+    .tox-help__more-link {
+        list-style: none;
+        margin-top: 1em;
+    }
+    .tox-image-tools {
+        width: 100%;
+    }
+    .tox-image-tools__toolbar {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        > .tox-spacer {
+            flex: 1;
+        }
+    }
+    .tox-image-tools__image {
+        background-color: $color_dove_gray_approx;
+        height: 380px;
+        overflow: auto;
+        position: relative;
+        width: 100%;
+        margin-top: 8px;
+        + .tox-image-tools__toolbar {
+            margin-top: 8px;
+        }
+    }
+    .tox-image-tools__image-bg {
+        background: $url_0;
+    }
+    .tox-croprect-block {
+        background: $black;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        position: absolute;
+        zoom: 1;
+    }
+    .tox-croprect-handle {
+        border: 2px solid var(--editor-white);
+        height: 20px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 20px;
+    }
+    .tox-croprect-handle-move {
+        border: 0;
+        cursor: move;
+        position: absolute;
+    }
+    .tox-croprect-handle-nw {
+        border-width: 2px 0 0 2px;
+        cursor: nw-resize;
+        left: 100px;
+        margin: -2px 0 0 -2px;
+        top: 100px;
+    }
+    .tox-croprect-handle-ne {
+        border-width: 2px 2px 0 0;
+        cursor: ne-resize;
+        left: 200px;
+        margin: -2px 0 0 -20px;
+        top: 100px;
+    }
+    .tox-croprect-handle-sw {
+        border-width: 0 0 2px 2px;
+        cursor: sw-resize;
+        left: 100px;
+        margin: -20px 2px 0 -2px;
+        top: 200px;
+    }
+    .tox-croprect-handle-se {
+        border-width: 0 2px 2px 0;
+        cursor: se-resize;
+        left: 200px;
+        margin: -20px 0 0 -20px;
+        top: 200px;
+    }
+    .tox-insert-table-picker {
+        display: flex;
+        flex-wrap: wrap;
+        width: 170px;
+        > div {
+            border-color: $color_pale_sky_approx;
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            //Instead of the line below you could use @include box-sizing($bs)
+            box-sizing: border-box;
+            height: 17px;
+            width: 17px;
+        }
+        .tox-insert-table-picker__selected {
+            background-color: $color_mariner_50_approx;
+            border-color: $color_mariner_50_approx;
+        }
+    }
+    .tox-insert-table-picker__label {
+        color:  var(--editor-text);
+        display: block;
+        font-size: 14px;
+        padding: 4px;
+        text-align: center;
+        width: 100%;
+    }
+    .tox-menu {
+        background-color: var(--editor-toolbar-bg);
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 4px 8px 0 $color_athens_gray_10_approx;
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: top;
+        z-index: 1150;
+        &.tox-collection {
+            &.tox-collection--list {
+                padding: 0;
+            }
+            &.tox-collection--toolbar {
+                padding: 4px;
+            }
+            &.tox-collection--grid {
+                padding: 4px;
+            }
+        }
+    }
+    .tox-menu__label {
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            margin: 0;
+        }
+        h3 {
+            margin: 0;
+        }
+        h4 {
+            margin: 0;
+        }
+        h5 {
+            margin: 0;
+        }
+        h6 {
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+        blockquote {
+            margin: 0;
+        }
+        code {
+            margin: 0;
+        }
+    }
+    .tox-menubar {
+        background: $url_1 left 0 top 0 var(--editor-toolbar-bg);
+        background-color: var(--editor-toolbar-bg);
+        display: flex;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        padding: 0 4px;
+        &.tox-toolbar {
+            border-top: 1px solid $color_pale_sky_approx;
+            margin-top: -1px;
+        }
+        &.tox-toolbar-overlord .tox-toolbar__primary {
+            border-top: 1px solid $color_pale_sky_approx;
+            margin-top: -1px;
+        }
+    }
+    .tox-mbtn {
+        align-items: center;
+        background: transparent;
+        border: 0;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-main);
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        height: 34px;
+        justify-content: center;
+        margin: 2px 0 3px;
+        outline: none;
+        overflow: hidden;
+        padding: 0 4px;
+        text-transform: none;
+        width: auto;
+        &:focus:not(:disabled) {
+            background: var(--editor-content-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+        &:hover:not(:disabled):not(.tox-mbtn--active) {
+            background: var(--editor-content-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+    }
+    .tox-mbtn[disabled] {
+        background-color: transparent;
+        border: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-disabled);
+        cursor: not-allowed;
+        .tox-mbtn__select-label {
+            cursor: not-allowed;
+        }
+    }
+    .tox-mbtn--active {
+        background: var(--editor-toolbar-bg);
+        border: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-main);
+    }
+    .tox-mbtn__select-label {
+        cursor: default;
+        font-weight: normal;
+        margin: 0 4px;
+    }
+    .tox-mbtn__select-chevron {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 16px;
+        display: none;
+    }
+    .tox-notification {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: grid;
+        font-size: 14px;
+        font-weight: normal;
+        grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
+        margin-top: 4px;
+        opacity: 0;
+        padding: 4px;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: transform 100ms ease-in, opacity 150ms ease-in;
+        p {
+            font-size: 14px;
+            font-weight: normal;
+        }
+        a {
+            text-decoration: underline;
+        }
+        .tox-progress-bar {
+            grid-column-end: 4;
+            grid-column-start: 1;
+            grid-row-end: 3;
+            grid-row-start: 2;
+            justify-self: center;
+        }
+    }
+    .tox-notification--in {
+        opacity: 1;
+    }
+    .tox-notification--success {
+        background-color: $color_kidnapper_approx;
+        border-color: $color_kidnapper_approx;
+        color: var(--editor-text-main);
+        p {
+            color: var(--editor-text-main);
+        }
+        a {
+            color: $color_chalet_green_approx;
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-notification--error {
+        background-color: $color_pot_pourri_approx;
+        border-color: $color_beauty_bush_approx;
+        color: var(--editor-text-main);
+        p {
+            color: var(--editor-text-main);
+        }
+        a {
+            color: $color_guardsman_red_approx;
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-notification--warn {
+        background-color: $color_early_dawn_approx;
+        border-color: $color_cream_brulee_approx;
+        color: var(--editor-text-main);
+        p {
+            color: var(--editor-text-main);
+        }
+        a {
+            color: var(--editor-text-main);
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-notification--warning {
+        background-color: $color_early_dawn_approx;
+        border-color: $color_cream_brulee_approx;
+        color: var(--editor-text-main);
+        p {
+            color: var(--editor-text-main);
+        }
+        a {
+            color: var(--editor-text-main);
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-notification--info {
+        background-color: $color_link_water_approx;
+        border-color: $color_polo_blue_approx;
+        color: var(--editor-text-main);
+        p {
+            color: var(--editor-text-main);
+        }
+        a {
+            color: var(--editor-text-main);
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-notification__body {
+        align-self: center;
+        color: var(--editor-text-main);
+        font-size: 14px;
+        grid-column-end: 3;
+        grid-column-start: 2;
+        grid-row-end: 2;
+        grid-row-start: 1;
+        text-align: center;
+        white-space: normal;
+        //Instead of the line below you could use @include word-break($value)
+        word-break: break-all;
+        //Instead of the line below you could use @include word-break($value)
+        word-break: break-word;
+        > * {
+            margin: 0;
+            + * {
+                margin-top: 1rem;
+            }
+        }
+    }
+    .tox-notification__icon {
+        align-self: center;
+        grid-column-end: 2;
+        grid-column-start: 1;
+        grid-row-end: 2;
+        grid-row-start: 1;
+        justify-self: end;
+        svg {
+            display: block;
+        }
+    }
+    .tox-notification__dismiss {
+        align-self: start;
+        grid-column-end: 4;
+        grid-column-start: 3;
+        grid-row-end: 2;
+        grid-row-start: 1;
+        justify-self: end;
+    }
+    .tox-pop {
+        display: inline-block;
+        position: relative;
+        &.tox-pop--bottom::before {
+            left: 50%;
+            top: 100%;
+            border-color: $color_pale_sky_approx transparent transparent transparent;
+            border-width: 9px;
+            margin-left: -9px;
+        }
+        &.tox-pop--bottom::after {
+            left: 50%;
+            top: 100%;
+            border-color: $color_shark_approx transparent transparent transparent;
+            border-width: 8px;
+            margin-left: -8px;
+            margin-top: -1px;
+        }
+        &.tox-pop--top::before {
+            left: 50%;
+            top: 0;
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-100%);
+            border-color: transparent transparent $color_pale_sky_approx transparent;
+            border-width: 9px;
+            margin-left: -9px;
+        }
+        &.tox-pop--top::after {
+            left: 50%;
+            top: 0;
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-100%);
+            border-color: transparent transparent $color_shark_approx transparent;
+            border-width: 8px;
+            margin-left: -8px;
+            margin-top: 1px;
+        }
+        &.tox-pop--left::before {
+            left: 0;
+            top: calc(50% - 1px);
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-50%);
+            border-color: transparent $color_pale_sky_approx transparent transparent;
+            border-width: 10px;
+            margin-left: -19px;
+        }
+        &.tox-pop--left::after {
+            left: 0;
+            top: calc(50% - 1px);
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-50%);
+            border-color: transparent $color_shark_approx transparent transparent;
+            border-width: 8px;
+            margin-left: -15px;
+        }
+        &.tox-pop--right::before {
+            left: 100%;
+            top: calc(50% + 1px);
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent $color_pale_sky_approx;
+            border-width: 10px;
+            margin-left: -1px;
+        }
+        &.tox-pop--right::after {
+            left: 100%;
+            top: calc(50% + 1px);
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent var(--editor-toolbar-bg);
+            border-width: 8px;
+            margin-left: -1px;
+        }
+        &.tox-pop--align-left::before {
+            left: 20px;
+        }
+        &.tox-pop--align-left::after {
+            left: 20px;
+        }
+        &.tox-pop--align-right::before {
+            left: calc(100% - 20px);
+        }
+        &.tox-pop--align-right::after {
+            left: calc(100% - 20px);
+        }
+        .tox-toolbar {
+            border-width: 0;
+        }
+    }
+    .tox-pop--resizing {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: width 0.1s ease;
+        .tox-toolbar {
+            flex-wrap: nowrap;
+        }
+    }
+    .tox-pop__dialog {
+        background-color: var(--editor-toolbar-bg);
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 1px 3px $black_15;
+        min-width: 0;
+        overflow: hidden;
+        .tox-toolbar {
+            background-color: transparent;
+            margin-bottom: -1px;
+        }
+        > *:not(.tox-toolbar) {
+            margin: 4px 4px 4px 8px;
+        }
+    }
+    .tox-pop::before {
+        border-style: solid;
+        content: '';
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0;
+    }
+    .tox-pop::after {
+        border-style: solid;
+        content: '';
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0;
+    }
+    .tox-sidebar-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        min-height: 0;
+    }
+    .tox-sidebar {
+        background-color: var(--editor-toolbar-bg);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .tox-sidebar__slider {
+        display: flex;
+        overflow: hidden;
+    }
+    .tox-sidebar__pane-container {
+        display: flex;
+    }
+    .tox-sidebar__pane {
+        display: flex;
+    }
+    .tox-sidebar--sliding-closed {
+        opacity: 0;
+    }
+    .tox-sidebar--sliding-open {
+        opacity: 1;
+    }
+    .tox-sidebar--sliding-growing {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: width 0.5s ease, opacity 0.5s ease;
+    }
+    .tox-sidebar--sliding-shrinking {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: width 0.5s ease, opacity 0.5s ease;
+    }
+    .tox-selector {
+        background-color: $color_dodger_blue_approx;
+        border-color: $color_dodger_blue_approx;
+        border-style: solid;
+        border-width: 1px;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: inline-block;
+        height: 10px;
+        position: absolute;
+        width: 10px;
+    }
+    &.tox-platform-touch {
+        .tox-selector {
+            height: 12px;
+            width: 12px;
+        }
+        .tox-split-button__chevron {
+            width: 20px;
+        }
+        .tox-split-button .tox-tbtn:first-child {
+            width: 30px;
+        }
+    }
+    .tox-slider {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        height: 24px;
+        justify-content: center;
+        position: relative;
+    }
+    .tox-slider__rail {
+        background-color: transparent;
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        height: 10px;
+        min-width: 120px;
+        width: 100%;
+    }
+    .tox-slider__handle {
+        background-color: $color_mariner_approx;
+        border: 2px solid $color_matisse_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        height: 24px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateX(-50%) translateY(-50%);
+        width: 14px;
+    }
+    .tox-source-code {
+        overflow: auto;
+    }
+    .tox-spinner {
+        display: flex;
+        > div {
+            animation: tam-bouncing-dots 1.5s ease-in-out 0s infinite both;
+            background-color:  var(--editor-text);
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 100%;
+            height: 8px;
+            width: 8px;
+            &:nth-child(1) {
+                animation-delay: -0.32s;
+            }
+            &:nth-child(2) {
+                animation-delay: -0.16s;
+            }
+        }
+    }
+    .tox-statusbar {
+        align-items: center;
+        background-color: var(--editor-toolbar-bg);
+        border-top: 1px solid $color_pale_sky_approx;
+        color:  var(--editor-text);
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 12px;
+        font-weight: normal;
+        height: 18px;
+        overflow: hidden;
+        padding: 0 8px;
+        position: relative;
+        text-transform: uppercase;
+        a {
+            color:  var(--editor-text);
+            text-decoration: none;
+            &:hover:not(:disabled):not([aria-disabled=true]) {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+            &:focus:not(:disabled):not([aria-disabled=true]) {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+    .tox-statusbar__text-container {
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        overflow: hidden;
+    }
+    .tox-statusbar__path {
+        display: flex;
+        flex: 1 1 auto;
+        margin-right: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        > * {
+            display: inline;
+            white-space: nowrap;
+        }
+    }
+    .tox-statusbar__wordcount {
+        flex: 0 0 auto;
+        margin-left: 1ch;
+        color:  var(--editor-text);
+        text-decoration: none;
+        &:hover:not(:disabled):not([aria-disabled=true]) {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        &:focus:not(:disabled):not([aria-disabled=true]) {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .tox-statusbar__path-item {
+        color:  var(--editor-text);
+        text-decoration: none;
+        &:hover:not(:disabled):not([aria-disabled=true]) {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        &:focus:not(:disabled):not([aria-disabled=true]) {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .tox-statusbar__resize-handle {
+        align-items: flex-end;
+        align-self: stretch;
+        cursor: nwse-resize;
+        display: flex;
+        flex: 0 0 auto;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: -8px;
+        padding-left: 1ch;
+        svg {
+            display: block;
+            fill:  var(--editor-text);
+        }
+        &:focus svg {
+            background-color: var(--editor-text-main);
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 1px;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 0 2px var(--editor-text-main);
+        }
+    }
+    .tox-throbber {
+        z-index: 1299;
+    }
+    .tox-throbber__busy-spinner {
+        align-items: center;
+        background-color: $color_shark_60_approx;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .tox-tbtn {
+        align-items: center;
+        background: transparent;
+        border: 0;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-main);
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        height: 34px;
+        justify-content: center;
+        margin: 2px 0 3px;
+        outline: none;
+        overflow: hidden;
+        padding: 0;
+        text-transform: none;
+        width: 34px;
+        svg {
+            display: block;
+            fill: var(--editor-text-main);
+        }
+        &.tox-tbtn-more {
+            padding-left: 5px;
+            padding-right: 5px;
+            width: inherit;
+        }
+        &:focus {
+            background: var(--editor-content-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            &:not(.tox-tbtn--disabled) {
+                color: var(--editor-text-main);
+                svg {
+                    fill: var(--editor-text-main);
+                }
+            }
+        }
+        &:hover {
+            background: var(--editor-content-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+            svg {
+                fill: var(--editor-text-main);
+            }
+        }
+        &:active {
+            background: var(--editor-toolbar-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+            svg {
+                fill: var(--editor-text-main);
+            }
+            > * {
+                //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+                transform: none;
+            }
+        }
+        &:disabled {
+            background: transparent;
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-disabled);
+            cursor: not-allowed;
+            &:hover {
+                background: transparent;
+                border: 0;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                color: var(--editor-text-disabled);
+                cursor: not-allowed;
+                svg {
+                    fill: var(--editor-text-disabled);
+                }
+            }
+            svg {
+                fill: var(--editor-text-disabled);
+            }
+        }
+    }
+    .tox-tbtn--disabled {
+        background: transparent;
+        border: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-disabled);
+        cursor: not-allowed;
+        &:hover {
+            background: transparent;
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-disabled);
+            cursor: not-allowed;
+            svg {
+                fill: var(--editor-text-disabled);
+            }
+        }
+        svg {
+            fill: var(--editor-text-disabled);
+        }
+    }
+    .tox-tbtn--enabled {
+        background: var(--editor-toolbar-bg);
+        border: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        color: var(--editor-text-main);
+        &:hover {
+            background: var(--editor-toolbar-bg);
+            border: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+            > * {
+                //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+                transform: none;
+            }
+            svg {
+                fill: var(--editor-text-main);
+            }
+        }
+        > * {
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: none;
+        }
+        svg {
+            fill: var(--editor-text-main);
+        }
+    }
+    .tox-tbtn--md {
+        height: 51px;
+        width: 51px;
+    }
+    .tox-tbtn--lg {
+        flex-direction: column;
+        height: 68px;
+        width: 68px;
+    }
+    .tox-tbtn--return {
+        align-self: stretch;
+        height: unset;
+        width: 16px;
+    }
+    .tox-tbtn--labeled {
+        padding: 0 4px;
+        width: unset;
+    }
+    .tox-tbtn__vlabel {
+        display: block;
+        font-size: 10px;
+        font-weight: normal;
+        letter-spacing: -0.025em;
+        margin-bottom: 4px;
+        white-space: nowrap;
+    }
+    .tox-tbtn--select {
+        margin: 2px 0 3px;
+        padding: 0 4px;
+        width: auto;
+    }
+    .tox-tbtn__select-label {
+        cursor: default;
+        font-weight: normal;
+        margin: 0 4px;
+    }
+    .tox-tbtn__select-chevron {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 16px;
+        svg {
+            fill: var(--editor-text-disabled);
+        }
+    }
+    .tox-split-button {
+        border: 0;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+        display: flex;
+        margin: 2px 0 3px;
+        overflow: hidden;
+        &:hover {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 0 1px var(--editor-button-hover) inset;
+        }
+        &:focus {
+            background: var(--editor-content-bg);
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            color: var(--editor-text-main);
+        }
+        > * {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+        }
+        .tox-tbtn {
+            margin: 0;
+        }
+        &.tox-tbtn--disabled {
+            &:hover {
+                background: transparent;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                color: var(--editor-text-disabled);
+            }
+            &:focus {
+                background: transparent;
+                //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                box-shadow: none;
+                color: var(--editor-text-disabled);
+            }
+            .tox-tbtn {
+                &:hover {
+                    background: transparent;
+                    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                    box-shadow: none;
+                    color: var(--editor-text-disabled);
+                }
+                &:focus {
+                    background: transparent;
+                    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                    box-shadow: none;
+                    color: var(--editor-text-disabled);
+                }
+            }
+        }
+    }
+    .tox-split-button__chevron {
+        width: 16px;
+        svg {
+            fill: var(--editor-text-disabled);
+        }
+    }
+    .tox-toolbar-overlord {
+        background-color: var(--editor-toolbar-bg);
+    }
+    .tox-toolbar__overflow--growing {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: height 0.3s ease, opacity 0.2s linear 0.1s;
+    }
+    .tox-toolbar__overflow--shrinking {
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: opacity 0.3s ease, height 0.2s linear 0.1s, visibility 0s linear 0.3s;
+    }
+    .tox-toolbar--scrolling {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        .tox-toolbar__group {
+            flex-shrink: 0;
+            flex-wrap: nowrap;
+        }
+    }
+    .tox-toolbar--no-divider {
+        background-image: none;
+    }
+    .tox-toolbar__group {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0 4px;
+    }
+    .tox-toolbar__group--pull-right {
+        margin-left: auto;
+    }
+    .tox-tooltip {
+        display: inline-block;
+        padding: 8px;
+        position: relative;
+    }
+    .tox-tooltip__body {
+        background-color: var(--editor-text-main);
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 2px 4px $color_athens_gray_30_approx;
+        color: $color_mirage_75_approx;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        padding: 4px 8px;
+        text-transform: none;
+    }
+    .tox-tooltip__arrow {
+        position: absolute;
+    }
+    .tox-well {
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        padding: 8px;
+        width: 100%;
+        > * {
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:only-child {
+                margin: 0;
+            }
+        }
+    }
+    .tox-custom-editor {
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        display: flex;
+        flex: 1;
+        position: relative;
+    }
+    .tox-dialog-loading::before {
+        background-color: $black_50;
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 1000;
+    }
+    .tox-tab {
+        cursor: pointer;
+    }
+    .tox-dialog__content-js {
+        display: flex;
+        flex: 1;
+    }
+    .tox-image-tools-edit-panel {
+        height: 60px;
+    }
+    .tox-image-tools__sidebar {
+        height: 60px;
+    }
+    *:not(svg):not(rect) {
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: inherit;
+        color: inherit;
+        cursor: inherit;
+        direction: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        text-align: inherit;
+        text-decoration: inherit;
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: inherit;
+        text-transform: inherit;
+        vertical-align: inherit;
+        white-space: inherit;
+        background: transparent;
+        border: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        float: none;
+        height: auto;
+        margin: 0;
+        max-width: none;
+        outline: 0;
+        padding: 0;
+        position: static;
+        width: auto;
+    }
+    input.tox-checkbox__input {
+        &:checked + .tox-checkbox__icons {
+            .tox-checkbox-icon__unchecked svg {
+                display: none;
+            }
+            .tox-checkbox-icon__checked svg {
+                display: block;
+            }
+        }
+        &:indeterminate + .tox-checkbox__icons {
+            .tox-checkbox-icon__unchecked svg {
+                display: none;
+            }
+            .tox-checkbox-icon__indeterminate svg {
+                display: block;
+            }
+        }
+        &:focus + .tox-checkbox__icons {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 3px;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: inset 0 0 0 1px $color_mariner_approx;
+            padding: calc(4px - 1px);
+        }
+    }
+    .tox-collection--toolbar-lg .tox-collection__item-icon {
+        height: 48px;
+        width: 48px;
+    }
+    .tox-user__avatar svg {
+        fill:  var(--editor-text);
+    }
+    &.tox-platform-ie .tox-dialog-wrap {
+    }
+    &:not(.tox-tinymce-inline) .tox-editor-header {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: box-shadow 0.5s;
+    }
+    &.tox-tinymce--toolbar-bottom .tox-editor-header {
+        margin-bottom: -1px;
+    }
+    &.tox-tinymce-inline .tox-editor-header {
+        margin-bottom: -1px;
+    }
+    &.tox-tinymce--toolbar-sticky-on .tox-editor-header {
+        background-color: transparent;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 4px 4px -3px $black_25;
+    }
+    .tox-control-wrap__status-icon-invalid svg {
+        fill: $color_guardsman_red_approx;
+    }
+    .tox-control-wrap__status-icon-unknown svg {
+        fill: $web_orange;
+    }
+    .tox-control-wrap__status-icon-valid svg {
+        fill: $color_japanese_laurel_approx;
+    }
+    .tox-form__grid--2col > .tox-form__group {
+        width: calc(50% - (8px / 2));
+    }
+    .tox-form__grid--3col > .tox-form__group {
+        width: calc(100% / 3 - (8px / 2));
+    }
+    .tox-form__grid--4col > .tox-form__group {
+        width: calc(25% - (8px / 2));
+    }
+    .tox-tbtn--bespoke .tox-tbtn__select-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 7em;
+    }
+    &.tox-tinymce-aux .tox-toolbar__overflow {
+        background-color: var(--editor-toolbar-bg);
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 1px 3px $black_15;
+    }
+    .tox-tooltip--down .tox-tooltip__arrow {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid var(--editor-text-main);
+        bottom: 0;
+        left: 50%;
+        position: absolute;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateX(-50%);
+    }
+    .tox-tooltip--up .tox-tooltip__arrow {
+        border-bottom: 8px solid var(--editor-text-main);
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateX(-50%);
+    }
+    .tox-tooltip--right .tox-tooltip__arrow {
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid var(--editor-text-main);
+        border-top: 8px solid transparent;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateY(-50%);
+    }
+    .tox-tooltip--left .tox-tooltip__arrow {
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid var(--editor-text-main);
+        border-top: 8px solid transparent;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: translateY(-50%);
+    }
+}
+.tox[dir=rtl] {
+    .tox-dialog__body-content {
+        .accessibility-issue__header {
+            .tox-button {
+                margin-right: 4px;
+            }
+            > *:nth-last-child(2) {
+                margin-right: auto;
+            }
+        }
+        .accessibility-issue__description {
+            padding: 4px 8px 4px 4px;
+            > *:last-child {
+                border-right-width: 1px;
+                padding-right: 4px;
+            }
+        }
+    }
+    .tox-checkbox__label {
+        margin-right: 4px;
+    }
+    .tox-checkbox__input {
+        right: -10000px;
+    }
+    .tox-collection--horizontal {
+        .tox-collection__item-caret {
+            margin-right: 4px;
+        }
+        .tox-collection__group:not(:last-of-type) {
+            border-left: 1px solid $color_pale_sky_approx;
+        }
+    }
+    .tox-collection__item-accessory {
+        margin-right: 16px;
+        text-align: left;
+    }
+    .tox-sv-palette {
+        margin-left: 15px;
+    }
+    .tox-hue-slider {
+        margin-left: 15px;
+    }
+    .tox-hue-slider-thumb {
+        margin-right: -1px;
+    }
+    .tox-swatches__picker-btn {
+        margin-right: auto;
+    }
+    .tox-comment__edit {
+        margin-right: 8px;
+        > *:last-child {
+            margin-right: 8px;
+        }
+    }
+    .tox-user__avatar {
+        svg {
+            margin-left: 8px;
+        }
+        + .tox-user__name {
+            margin-right: 8px;
+        }
+    }
+    .tox-dialog__body {
+        text-align: right;
+    }
+    .tox-dialog__footer {
+        .tox-dialog__footer-start > * {
+            margin-right: 8px;
+        }
+        .tox-dialog__footer-end > * {
+            margin-right: 8px;
+        }
+    }
+    .tox-control-wrap__status-icon-wrap {
+        left: 4px;
+    }
+    .tox-label {
+        padding: 0 0 0 8px;
+    }
+    .tox-selectfield {
+        select[size="0"] {
+            padding-left: 24px;
+        }
+        select[size="1"] {
+            padding-left: 24px;
+        }
+        svg {
+            left: 8px;
+        }
+    }
+    .tox-statusbar {
+        flex-direction: row-reverse;
+    }
+    .tox-bar .tox-checkbox {
+        margin-right: 4px;
+    }
+    .tox-collection--list .tox-collection__item {
+        > *:not(:first-child) {
+            margin-right: 8px;
+        }
+        > .tox-collection__item-label:first-child {
+            margin-right: 4px;
+        }
+    }
+    .tox-collection__item-icon-rtl .tox-collection__item-icon svg {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotateY(180deg);
+    }
+    .tox-collection .tox-collection__item-caret {
+        margin-right: 16px;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotateY(180deg);
+    }
+    .tox-rgb-form label {
+        margin-left: 0.5em;
+    }
+    .tox-comment__buttonspacing > *:last-child {
+        margin-right: 8px;
+    }
+    .tox-comment__reply > *:last-child {
+        margin-right: 8px;
+    }
+    .tox-control-wrap--status-invalid .tox-textfield {
+        padding-left: 32px;
+    }
+    .tox-control-wrap--status-unknown .tox-textfield {
+        padding-left: 32px;
+    }
+    .tox-control-wrap--status-valid .tox-textfield {
+        padding-left: 32px;
+    }
+    .tox-form__controls-h-stack > *:not(:first-child) {
+        margin-right: 4px;
+    }
+    .tox-toolbar-textfield + * {
+        margin-right: 4px;
+    }
+    .tox-listboxfield svg {
+        left: 8px;
+    }
+    .tox-image-tools__toolbar > {
+        .tox-slider {
+            &:not(:first-of-type) {
+                margin-right: 8px;
+            }
+            + .tox-button {
+                margin-right: 32px;
+            }
+        }
+        .tox-button + .tox-slider {
+            margin-right: 32px;
+        }
+    }
+    .tox-insert-table-picker > div:nth-child(10n + 1) {
+        border-right: 0;
+    }
+    .tox-spinner > div:not(:first-child) {
+        margin-right: 4px;
+    }
+    .tox-statusbar__path > * {
+        margin-left: 4px;
+    }
+    .tox-tbtn__icon-rtl svg {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotateY(180deg);
+    }
+    .tox-toolbar__group:not(:last-of-type) {
+        border-left: 1px solid $color_pale_sky_approx;
+    }
+}
+.tox-tinymce {
+    border: 1px solid $color_pale_sky_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: none;
+    //Instead of the line below you could use @include box-sizing($bs)
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    visibility: inherit !important;
+    *:focus {
+        outline: none;
+    }
+    &:not(.tox-tinymce-inline) .tox-editor-header:not(:first-child) {
+        .tox-toolbar:first-child {
+            border-top: 1px solid $color_pale_sky_approx;
+        }
+        .tox-toolbar-overlord:first-child .tox-toolbar__primary {
+            border-top: 1px solid $color_pale_sky_approx;
+        }
+    }
+}
+.tox-tinymce-inline {
+    border: none;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: none;
+    .tox-editor-header {
+        background-color: transparent;
+        border: 1px solid $color_pale_sky_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 0;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+    }
+}
+.tox-tinymce-aux {
+    z-index: 1300;
+    *:focus {
+        outline: none;
+    }
+}
+button::-moz-focus-inner {
+    border: 0;
+}
+@media only screen and(max-width:767px) {
+    body:not(.tox-force-desktop) {
+        .tox {
+            .tox-dialog {
+                align-self: flex-start;
+                margin: 8px auto;
+                width: calc(100vw - 16px);
+            }
+            .tox-dialog__body {
+                flex-direction: column;
+            }
+            .tox-dialog__body-nav {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 0;
+            }
+            &:not([dir=rtl]) {
+                .tox-dialog__body-nav {
+                    margin-right: 0;
+                }
+                .tox-dialog__body-nav-item:not(:first-child) {
+                    margin-left: 8px;
+                }
+            }
+        }
+        .tox[dir=rtl] {
+            .tox-dialog__body-nav {
+                margin-left: 0;
+            }
+            .tox-dialog__body-nav-item:not(:first-child) {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+.tox-editor-dock-fadeout {
+    opacity: 0;
+    visibility: hidden;
+}
+.tox-editor-dock-fadein {
+    opacity: 1;
+    visibility: visible;
+}
+.tox-editor-dock-transition {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: visibility 0s linear 0.25s, opacity 0.25s ease;
+    &.tox-editor-dock-fadein {
+        //Instead of the line below you could use @include transition-delay($delay-1, $delay-2, $delay-3, $delay-4, $delay-5, $delay-6, $delay-7, $delay-8, $delay-9, $delay-10)
+        transition-delay: 0s;
+    }
+}
+.tox-fullscreen {
+    border: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    touch-action: pinch-zoom;
+    width: 100%;
+    .tox.tox-tinymce-aux {
+        z-index: 1201;
+    }
+    ~ .tox.tox-tinymce-aux {
+        z-index: 1201;
+    }
+}
+@keyframes tam-bouncing-dots {
+    0% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0);
+    }
+    80% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0);
+    }
+    100% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0);
+    }
+    40% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(1);
+    }
+}
+body.tox-dialog__disable-scroll {
+    overflow: hidden;
+}
+.tox[dir="rtl"] .tox-color-input {
+    .tox-textfield {
+        padding-right: 36px;
+    }
+    span {
+        right: 6px;
+    }
+}
+.tox-shadowhost.tox-fullscreen {
+    z-index: 1200;
+}
