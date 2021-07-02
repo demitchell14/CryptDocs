@@ -9,7 +9,7 @@ import {
     StyledOcticon,
     Text,
     TextInput,
-    themeGet
+    themeGet, useTheme
 } from "@primer/components";
 import DocEditor from "../../components/DocEditor";
 import {EyeClosedIcon, EyeIcon, LockIcon, UnlockIcon} from "@primer/octicons-react";
@@ -105,17 +105,24 @@ const encryptedCheck = `<!--encrypted-->
 <pre>-----BEGIN PGP MESSAGE-----`
 
 function Write(props: Props) {
+    const { theme } = useTheme();
     const container = useRef<HTMLDivElement | null>(null);
     const header = useRef<HTMLDivElement | null>(null);
     const footer = useRef<HTMLDivElement | null>(null);
     const contentSize = useRef(0);
     const encryptedSize = useRef(0);
+    const [title, setTitle] = useState('');
+    const [password, setPassword] = useState('');
     const [passwordHidden, setPasswordHidden] = useState(true);
     const [locked, setLocked] = useState(false);
     const [ content, setContent ] = useState<string | undefined>();
     const [ encrypted, setEncrypted ] = useState<string | undefined>();
+    const [hasError, setHasError] = useState<string | undefined>();
 
     const showEncrypted = typeof content === 'undefined' && typeof encrypted === 'string'
+
+    const onChangeTitle = (e: React.SyntheticEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
+    const onChangePassword = (e: React.SyntheticEvent<HTMLInputElement>) => setPassword(e.currentTarget.value);
 
     const onSaveContent = (nextContent: string) => {
         if (nextContent.startsWith(encryptedCheck))
@@ -132,7 +139,10 @@ function Write(props: Props) {
     }, [content, encrypted]);
 
     const showHidePassword = passwordHidden ? EyeIcon : EyeClosedIcon;
-    const togglePasswordHidden = () => setPasswordHidden(!passwordHidden);
+    const togglePasswordHidden = () => {
+        setHasError(undefined);
+        setPasswordHidden(!passwordHidden);
+    }
 
     const lockedIcon = locked ? UnlockIcon : LockIcon;
     const lockedTitle = locked ? 'Decrypt the document using the password provided' : 'Encrypt the document and hide it from view.'
@@ -142,15 +152,21 @@ function Write(props: Props) {
             if (typeof encrypted === 'undefined') {
                 return;
             }
-            const decryptedData = await decrypt(encrypted, 'password');
-            setEncrypted(undefined);
-            setContent(decryptedData as string);
-            setLocked(false);
+            decrypt(encrypted, password)
+                .then((decryptedData) => {
+                    setEncrypted(undefined);
+                    setContent(decryptedData as string);
+                    setLocked(false);
+                })
+                .catch((err) => {
+                    console.error(err);
+                    setHasError('password');
+                });
         } else {
             // TODO encrypt the content and remove the regular content
             if (!(content && content.length > 0))
                 return;
-            const encryptedString = await encrypt('noname', content,'password', true);
+            const encryptedString = await encrypt(title, content, password, true);
             encryptedSize.current = new Blob(Array.from(encryptedString)).size;
             setEncrypted(encryptedString);
             setContent(undefined);
@@ -162,7 +178,7 @@ function Write(props: Props) {
         if (!(content && content.length > 0)) {
             return;
         }
-        const encryptedString = await encrypt('noname', content, 'password', true);
+        const encryptedString = await encrypt(title, content, password, true);
         console.log(encryptedString);
         setEncrypted(encryptedString);
         alert('actually save this somewhere, ofc...');
@@ -205,19 +221,25 @@ function Write(props: Props) {
                             alignItems={'center'}
                         >
                             <Box><Text mr={2} as={'label'}>Document Title:</Text></Box>
-                            <Box><TextInput width={'100%'} type={'text'} /></Box>
+                            <Box><TextInput value={title} onChange={onChangeTitle} width={'100%'} type={'text'} /></Box>
                             <Box>TODO status/info??</Box>
                             <Box><Text mr={2} as={'label'}>Document Password:</Text></Box>
                             <Box display={'flex'}>
-                                <TextInput sx={{ flexGrow: 1 }} type={passwordHidden ? 'password' : 'text'} />
+                                <TextInput
+                                    value={password}
+                                    onChange={onChangePassword}
+                                    sx={{
+                                        flexGrow: 1,
+                                        borderColor: hasError === 'password' ? theme?.colors?.border?.danger : undefined,
+                                    }}
+                                    type={passwordHidden ? 'password' : 'text'}
+                                />
                                 <Button ml={1} title={'Show/Hide Password'} onClick={togglePasswordHidden}>
                                     <StyledOcticon icon={showHidePassword} />
                                 </Button>
                             </Box>
                             <Box>TODO status/info??</Box>
                         </InfoGrid>
-
-                        {bitLengthToString(contentSize.current, true)}
 
                         <ActionBox as={Box}>
                             <Text as={'small'} display={'block'} color={'text.secondary'}>Last Save: {new Date().toString()}</Text>
