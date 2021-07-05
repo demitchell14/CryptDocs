@@ -45,6 +45,12 @@ function AppHeader(props: Props) {
             </Header.Item>
 
             <Header.Item>
+                <Header.Link as={StyledLink} forwardedAs={Link} to={'/explore'}>
+                    Explore
+                </Header.Link>
+            </Header.Item>
+
+            <Header.Item>
                 <Header.Link as={StyledLink} forwardedAs={Link} to={'/write'}>
                     Write
                 </Header.Link>

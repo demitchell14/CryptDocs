@@ -4,6 +4,7 @@ import {BrowserRouter, HashRouter, Route} from "react-router-dom";
 
 const HomePage = React.lazy(() => import('./pages/Home'));
 const WritePage = React.lazy(() => import('./pages/Write'));
+const ExplorerPage = React.lazy(() => import('./pages/Explorer'));
 
 type Props = any;
 
@@ -14,6 +15,10 @@ function AppRouter(props: Props) {
         <React.Suspense fallback={'loading'}>
             <Route path={'/home'} render={(props) => (
                 <HomePage {...props} />
+            )} />
+
+            <Route path={'/explore'} render={(props) => (
+                <ExplorerPage {...props} />
             )} />
 
             <Route path={'/write'} render={(props) => (
