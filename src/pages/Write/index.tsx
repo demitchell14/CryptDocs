@@ -15,6 +15,7 @@ import DocEditor from "../../components/DocEditor";
 import {EyeClosedIcon, EyeIcon, LockIcon, UnlockIcon} from "@primer/octicons-react";
 import { encrypt, decrypt } from '../../controllers/encryption';
 import {bitLengthToString} from "../../util";
+import DocExplorerSidebar from "../../components/DocExplorerSidebar";
 
 type Props = any;
 
@@ -199,9 +200,7 @@ function Write(props: Props) {
 
     return (
         <WriteContainer>
-            <div>
-                {/*left panel*/}
-            </div>
+            <DocExplorerSidebar width={200} />
             <EditorContainer ref={container}>
                 <Box px={2} ref={header}>
                     <Heading>Document Editor</Heading>
