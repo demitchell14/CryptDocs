@@ -6,7 +6,7 @@ interface LayoutState {
 }
 
 const initialState: LayoutState = {
-    mode: 'auto'
+    mode: window.localStorage.getItem('theme-mode') as 'day'|'night' || 'auto'
 };
 
 export const layoutSlice = createSlice({
@@ -15,13 +15,16 @@ export const layoutSlice = createSlice({
     reducers: {
         setNight: (state) => {
             state.mode = 'night';
+            window.localStorage.setItem('theme-mode', 'night')
         },
         setDay: (state) => {
             state.mode = 'day';
+            window.localStorage.setItem('theme-mode', 'day')
             console.log(state)
         },
         setAuto: (state) => {
             state.mode = 'auto';
+            window.localStorage.setItem('theme-mode', 'auto')
         }
     },
 });

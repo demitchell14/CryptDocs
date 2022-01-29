@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ThemeProvider, theme} from "@primer/components";
 import { Layout } from './layouts';
 import AppRouter from './AppRouter';
@@ -9,8 +9,8 @@ import {HashRouter} from "react-router-dom";
 
 function App() {
 	return (
-		<ThemeProvider colorMode={'auto'} nightScheme={'dark'} dayScheme={'light'}>
-			<HashRouter hashType={'hashbang'}>
+		<ThemeProvider colorMode={window.localStorage.getItem('theme-mode') as 'day'|'night' || 'auto'} nightScheme={'dark'} dayScheme={'light'}>
+			<HashRouter>
 				<Layout>
 					<AppRouter />
 				</Layout>
