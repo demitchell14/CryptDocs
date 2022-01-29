@@ -5,9 +5,7 @@ on:
 
 jobs:
   release:
-    if: |
-      github.repository == 'demitchell14/CryptDocs'
-      startsWith(github.ref, 'refs/tags/')
+    if: github.repository == 'demitchell14/CryptDocs'
     runs-on: self-hosted
 
     steps:
