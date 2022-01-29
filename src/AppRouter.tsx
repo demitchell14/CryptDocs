@@ -1,32 +1,47 @@
 import React from 'react';
-// import {createBrowserHistory} from "history";
-import {BrowserRouter, HashRouter, Route} from "react-router-dom";
+import {Route, Navigate, Routes, useLocation} from "react-router-dom";
 
 const HomePage = React.lazy(() => import('./pages/Home'));
 const WritePage = React.lazy(() => import('./pages/Write'));
 const ExplorerPage = React.lazy(() => import('./pages/Explorer'));
 
-type Props = any;
+function AppRouter() {
+    const location = useLocation();
 
-// const browserHistory = createBrowserHistory();
-
-function AppRouter(props: Props) {
     return (
         <React.Suspense fallback={'loading'}>
-            <Route path={'/home'} render={(props) => (
-                <HomePage {...props} />
-            )} />
+           <Routes location={location}>
+               <Route
+                   path={'/home'}
+                   element={<HomePage />}
+               />
 
-            <Route path={'/explore'} render={(props) => (
-                <ExplorerPage {...props} />
-            )} />
+               <Route
+                   path={'/explore'}
+                   element={<ExplorerPage />}
+               />
 
-            <Route path={'/write'} render={(props) => (
-                <WritePage {...props} />
-            )} />
+               <Route
+                   path={'/write'}
+               >
+                   <Route
+                       index
+                       element={<WritePage />}
+                   />
+                   <Route
+                       path={':id'}
+                       element={<WritePage />}
+                   />
+               </Route>
+
+               <Route
+                   index
+                   element={<Navigate to={'/explore'} />}
+               />
+
+           </Routes>
         </React.Suspense>
     );
 }
 
-export type AppRouterProps = Props;
 export default AppRouter;
