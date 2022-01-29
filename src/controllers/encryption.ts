@@ -1,27 +1,36 @@
-import * as openpgp from 'openpgp';
+import {
+    createMessage,
+    encrypt as pgpEncrypt,
+    readMessage,
+    decrypt as pgpDecrypt,
+    generateKey as pgpGenerateKey
+} from 'openpgp';
 
 export class EncryptionHandler {
 
 }
 
-export async function encrypt(title: string, data: string, keys: string | string[], armored = true) {
-    const message = await openpgp.createMessage({ text: data, type: 'text', date: new Date(), filename: title });
-    console.log(message);
+export async function encrypt(title: string, data: string, keys: string | string[]) {
+    const message = await createMessage({
+        text: data,
+        date: new Date(),
+        filename: title,
+        format: 'utf8'
+    });
 
     // const signedMessage = await openpgp.sign({ message })
     // console.log(signedMessage);
 
-    const encrypted = await openpgp.encrypt({
+    const encrypted = await pgpEncrypt({
         message,
-        passwords: keys,
-        armor: armored,
+        passwords: keys
     })
 
     return encrypted;
 }
 
 export async function decrypt(data: any, keys: string | string[]) {
-    const encryptedMessage = await openpgp.readMessage({
+    const encryptedMessage = await readMessage({
         binaryMessage: data instanceof Array ? data : undefined,
         armoredMessage: typeof data === 'string' ? data : undefined,
         // armoredMessage: data,
@@ -29,7 +38,7 @@ export async function decrypt(data: any, keys: string | string[]) {
     } as any)
     console.log(encryptedMessage);
 
-    const { data: decrypted } = await openpgp.decrypt({
+    const { data: decrypted } = await pgpDecrypt({
         message: encryptedMessage,
         passwords: keys,
         format: 'utf8'
@@ -39,7 +48,7 @@ export async function decrypt(data: any, keys: string | string[]) {
 }
 
 export async function generateKey() {
-    return await openpgp.generateKey({
+    return await pgpGenerateKey({
         userIDs: [
             { name: 'My Name', email: 'AnEmail@mail.com' }
         ],
