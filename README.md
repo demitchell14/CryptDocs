@@ -1,3 +1,7 @@
+[![release](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml/badge.svg?event=release)](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml)
+
+# TODO make readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
