@@ -1,17 +1,16 @@
-import React, {MouseEventHandler, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import {BorderBox, Box, Button, Dialog, Flex, Grid, Heading, Link, Text, themeGet} from "@primer/components";
-import { Link as RouterLink } from 'react-router-dom';
+import {BorderBox, Box, Flex, Grid, Heading, Link, Text, themeGet} from "@primer/components"
 import FeaturedDoc from "../../components/FeaturedDoc";
 
 import testdata from './testdata.json';
 import ListItemDoc from "../../components/ListItemDoc/ListItemDoc";
 import LazyComponent from "../../components/LazyComponent/LazyComponent";
 import Blankslate from "../../components/Blankslate";
+import useIndexedDB from "../../hooks/useIndexedDB";
 
 const PinnedDialog = React.lazy(() => import('./PinnedDialog'));
 
-type Props = any;
 
 const PaddedBox = styled.div`
     padding-left: ${themeGet('space.2')};
@@ -74,11 +73,53 @@ const ListItem = styled.div`
     }
 `;
 
-function Explorer(props: Props) {
-    const [documents, setDocuments] = useState(testdata);
-    // const [documents, setDocuments] = useState([]);
+function Explorer() {
+    const indexDB = useIndexedDB();
+    // const [documents, setDocuments] = useState(testdata);
+    const [documents, setDocuments] = useState([]);
     const [ pinnedDialogOpen, setPinnedDialogOpen ] = useState(false);
     const [selected, setSelected] = useState<number[]>([]);
+
+    const updateSelected = (selected) => {
+        Promise.all(documents.map((doc: any) => {
+            doc.pinned = false
+            return indexDB.update('documents-meta', doc.id, doc).then(() => '')
+        })).then(() => Promise.all(selected.map((idx) => {
+            const doc = documents[idx] as any;
+            if (doc) {
+                doc.pinned = true
+                return indexDB.update('documents-meta', doc.id, doc)
+            }
+            return '';
+        }))).then((response) => {
+            const ids = response.filter((r) => r) as string[]
+            const indexes: number[] = [];
+            ids.forEach((key) => {
+                const index = documents.findIndex((k: any) => k.id === key);
+                if (index >= 0) indexes.push(index);
+            })
+            setSelected(indexes);
+        })
+    }
+
+    useEffect(() => {
+        const selectedIndexes: number[] = [];
+        documents.forEach((doc: any, idx) => {
+            if (doc.pinned) selectedIndexes.push(idx)
+        })
+        setSelected(selectedIndexes);
+    }, [documents]);
+
+    useEffect(() => {
+        if (indexDB.connected) {
+            indexDB.fetchAll('documents-meta').then((docs) => {
+                if (docs !== null) {
+                    setDocuments(docs);
+                    console.log(docs);
+                }
+            })
+        }
+    }, [indexDB.connected]);
 
     const togglePinnedDialog = (evt?: React.MouseEvent<HTMLAnchorElement>) => {
         if (evt) evt.preventDefault();
@@ -92,27 +133,11 @@ function Explorer(props: Props) {
                     isOpen={pinnedDialogOpen}
                     onDismiss={togglePinnedDialog}
                     selected={selected}
-                    setSelected={setSelected}
+                    setSelected={updateSelected}
                     options={documents}
 
                 />
             </LazyComponent>
-            {/*<Dialog height={'80%'} isOpen={pinnedDialogOpen} onDismiss={togglePinnedDialog}>*/}
-            {/*    <Dialog.Header minHeight={50} height={'7%'}>Header Here</Dialog.Header>*/}
-            {/*    <Box height={'calc(100% - 15%)'} maxHeight={'calc(100% - 100px)'} overflowY={'scroll'}>*/}
-            {/*        {documents.map((data, key) => (*/}
-            {/*            <ListItemDoc key={key} {...data} alignItems={'center'} />*/}
-            {/*        ))}*/}
-            {/*    </Box>*/}
-            {/*    <Flex minHeight={50} height={'8%'} alignItems={'center'}>*/}
-            {/*        <Button color={'text.success'} ml={'auto'} mr={2} my={1}>Save Selected</Button>*/}
-            {/*    </Flex>*/}
-            {/*</Dialog>*/}
-            {/*<PaddedBox as={Box}>*/}
-            {/*    <Heading>Document Explorer</Heading>*/}
-            {/*    <Text color={'text.secondary'}>This is a list of all documents that you currently have stored in CryptDocs.</Text>*/}
-            {/*</PaddedBox>*/}
-            {/*<Divider />*/}
             <Container>
                 <ActionBox as={Box} className={'open'}>
                     LOL Hi
@@ -151,7 +176,7 @@ function Explorer(props: Props) {
                             <Text as={'small'}>Last Modified</Text>
                         </ListItem>
                         {documents.length > 0 ? documents.map((data, key) => (
-                            <ListItemDoc id={key} key={key} {...data} alignItems={'center'} />
+                            <ListItemDoc index={key} key={key} {...data} alignItems={'center'} />
                         )) : (
                             <Blankslate minHeight={400}>
                                 Empty
@@ -164,5 +189,4 @@ function Explorer(props: Props) {
     );
 }
 
-export type ExplorerProps = Props;
 export default Explorer;

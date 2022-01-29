@@ -1,6 +1,5 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import {Box, Button, Dialog, DialogProps, Flex} from "@primer/components";
-import testdata from "./testdata.json";
 import ListItemDoc from "../../components/ListItemDoc/ListItemDoc";
 
 type Props = DialogProps & {
@@ -9,6 +8,7 @@ type Props = DialogProps & {
     options: Array<{
         title: string;
         modifiedAt: number;
+        pinned?: boolean;
     }>
 };
 
@@ -38,12 +38,12 @@ function PinnedDialog(props: Props) {
         <Dialog height={'80%'} onDismiss={onDismiss} {...otherDialogProps}>
             <Dialog.Header minHeight={50} height={'7%'}>Header Here</Dialog.Header>
             <Box height={'calc(100% - 15%)'} maxHeight={'calc(100% - 100px)'} overflowY={'scroll'}>
-                {testdata.map((data, key: number) => (
+                {options.map((data: any, key: number) => (
                     <ListItemDoc
                         {...data}
                         variant={'option'}
                         onClick={onSelect}
-                        id={key}
+                        index={key}
                         selected={(selected || []).indexOf(key) >= 0}
                         key={key}
                         alignItems={'center'} />
