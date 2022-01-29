@@ -3,13 +3,12 @@ import {ThemeProvider, theme} from "@primer/components";
 import { Layout } from './layouts';
 import AppRouter from './AppRouter';
 import {HashRouter} from "react-router-dom";
-
-
-// theme.colorSchemes.dark.colors.bg?.canvas
+import { ServiceWorker } from './components/ServiceWorker'
 
 function App() {
 	return (
 		<ThemeProvider colorMode={window.localStorage.getItem('theme-mode') as 'day'|'night' || 'auto'} nightScheme={'dark'} dayScheme={'light'}>
+			<ServiceWorker initialize />
 			<HashRouter>
 				<Layout>
 					<AppRouter />
