@@ -1,12 +1,13 @@
 name: release
 on:
-  push
-#  release:
-#    types: [published]
+  push:
+    tag: 'v*'
 
 jobs:
   release:
-    if: github.repository == 'demitchell14/CryptDocs'
+    if: |
+      github.repository == 'demitchell14/CryptDocs'
+      startsWith(github.ref, 'refs/tags/')
     runs-on: self-hosted
 
     steps:
@@ -39,7 +40,6 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             cryptdocs-client-v*.*.*
