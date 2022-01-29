@@ -1,16 +1,12 @@
 import React, {useRef} from 'react';
-import {Link, RouteComponentProps} from "react-router-dom";
-import {useAppDispatch, useAppDispatch2, useAppSelector} from "../../hooks/useAppDispatch";
-import {selectUser, lolHi, handleAuthentication, UserState} from "../../store/user";
-import {useStore} from "react-redux";
+import {Link} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatch";
+import {selectUser, lolHi, handleAuthentication} from "../../store/user";
 import {Button} from "@primer/components";
-import {ThunkDispatch} from "@reduxjs/toolkit";
-import {RootState} from "../../store";
-
-type Props = RouteComponentProps;
 
 
-function Home(props: Props) {
+
+function Home() {
     const dispatcher = useAppDispatch()
     const selector = useAppSelector(selectUser);
     const authenticator = useRef<any>(null);
@@ -41,5 +37,4 @@ function Home(props: Props) {
     </div>);
 }
 
-export type HomeProps = Props;
 export default Home;
