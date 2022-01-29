@@ -242,17 +242,20 @@ function Write() {
 
         const modifiedAt = new Date();
         const encryptedString = await encrypt(title, content, password || storedPassword.current)
+        const meta = { ...otherMeta.current, title, modifiedAt, encryptedSize: encryptedSize.current, contentSize: contentSize.current }
         encryptedSize.current = new Blob(Array.from(encryptedString)).size;
         setEncrypted(encryptedString);
 
         if (documentId) {
-            await indexedDB.update('documents-meta', documentId, { ...otherMeta.current, title, modifiedAt, encryptedSize: encryptedSize.current, contentSize: contentSize.current });
+            await indexedDB.update('documents-meta', documentId, meta);
             await indexedDB.update('documents-data', documentId, encryptedString);
         } else {
             const index = nanoid(64);
-            await indexedDB.insert('documents-meta', index, { ...otherMeta.current, title, modifiedAt, encryptedSize: encryptedSize.current, contentSize: contentSize.current });
+            await indexedDB.insert('documents-meta', index, meta);
             await indexedDB.insert('documents-data', index, encryptedString);
         }
+
+        otherMeta.current = meta;
 
         setHasError(undefined)
         if (confirmPasswordInput.current) {
@@ -268,12 +271,16 @@ function Write() {
         })
     }, [content, title, password, indexedDB]);
 
-    const onPasswordEntered = useCallback((evt: KeyboardEvent) => {
+    const onPasswordEntered = useCallback((submit = false) => (evt: KeyboardEvent) => {
         if (evt.key !== 'Enter') {
             return
         }
-        handleLockedState()
-    }, [handleLockedState])
+        if (submit) {
+            onSaveDocument(true)()
+        } else {
+            handleLockedState()
+        }
+    }, [handleLockedState, onSaveDocument])
 
     const closeChangePassword = useCallback(() => setShowChangePasswordPopover(false), []);
 
@@ -287,6 +294,12 @@ function Write() {
             }
         }
     }, [container, header, footer, isMobile])
+
+    useEffect(() => {
+        if (confirmPasswordInput.current && showChangePasswordPopover) {
+            confirmPasswordInput.current.focus()
+        }
+    }, [showChangePasswordPopover]);
 
     useEffect(() => {
         console.log({
@@ -402,7 +415,7 @@ function Write() {
                                     <TextInput
                                         value={password}
                                         onChange={onChangePassword}
-                                        onKeyUp={onPasswordEntered}
+                                        onKeyUp={onPasswordEntered()}
                                         autoComplete={'off'}
                                         disabled={!enabled}
                                         block
@@ -421,6 +434,7 @@ function Write() {
                                                     block
                                                     placeholder={'Confirm new password'}
                                                     ref={confirmPasswordInput}
+                                                    onKeyUp={onPasswordEntered(true)}
                                                     autoComplete={'off'}
                                                     disabled={!enabled}
                                                     sx={{
