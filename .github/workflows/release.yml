@@ -19,11 +19,6 @@ jobs:
           check-latest: true
           cache: yarn
 
-      - name: Create .npmrc
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
-#          echo "//npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_TOKEN }}" >> .npmrc
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
