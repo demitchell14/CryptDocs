@@ -65,6 +65,11 @@
     "type": "git",
     "url": "https://github.com/demitchell14/CryptDocs"
   },
+  "files": [
+    "package.json",
+    "README.md",
+    "build"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
