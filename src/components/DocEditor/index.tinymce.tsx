@@ -82,7 +82,7 @@ function DocEditor(props: DocEditorProps) {
         setConfig((prev) => ({
             ...prev,
             skin: `oxide${resolvedColorMode === 'day' ? '' : '-dark'}`,
-            content_css: resolvedColorMode === 'day' ? 'light' : 'dark'
+            content_css: resolvedColorMode === 'day' ? 'default' : 'dark'
         }))
     }, [resolvedColorMode])
 
