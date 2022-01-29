@@ -51,7 +51,8 @@ function DocEditor(props: DocEditorProps) {
     }>({
         min_height: minHeight,
         height: '100%',
-        base_url: process.env.NODE_ENV === 'production' ? undefined : '/tinymce',
+        base_url: '/tinymce',
+        // base_url: process.env.NODE_ENV === 'production' ? undefined : '/tinymce',
         // content_css: '/tinymce/skins/ui/oxide/content.css',
         theme_url: `/tinymce/themes/silver/theme.js`,
         content_css: resolvedColorMode === 'day' ? 'default' : 'dark',
