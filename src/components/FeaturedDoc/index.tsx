@@ -4,7 +4,8 @@ import {BorderBox, BorderBoxProps, Button, Heading, Link, StyledOcticon, Text, t
 import styled from "styled-components";
 import {StarFillIcon, StarIcon} from "@primer/octicons-react";
 
-type Props = BorderBoxProps & {
+type Props = Omit<BorderBoxProps, 'id'> & {
+    id: string;
     title: string;
     modifiedAt?: number;
 };
@@ -45,7 +46,7 @@ const FavoriteContainer = styled.div`
 `;
 
 function FeaturedDoc(props: Props) {
-    const { title, modifiedAt, ...boxProps } = props;
+    const { title, modifiedAt, id, ...boxProps } = props;
     const [favorited, setFavorited] = useState(false);
 
     const favoriteIcon = favorited ? StarFillIcon : StarIcon;
@@ -60,7 +61,7 @@ function FeaturedDoc(props: Props) {
 
     return (
         <Container as={BorderBox} {...boxProps}>
-            <ContainerLink as={RouterLink} to={'/write'}>
+            <ContainerLink as={RouterLink} to={`/write/${id}`}>
                 <FavoriteContainer title={favoriteTitle} onClick={onToggleFavorite}>
                     <FavoriteIcon as={StyledOcticon} icon={favoriteIcon} className={favorited ? 'favorite' : undefined} />
                 </FavoriteContainer>

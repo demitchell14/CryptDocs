@@ -8,8 +8,9 @@ type Props = Omit<FlexProps, 'onClick'|'id'> & {
     onClick?: (evt: React.SyntheticEvent, idx: number) => unknown;
     variant?: 'list' | 'option'
     selected?: boolean;
+    index: number;
 
-    id: number;
+    id: string;
     title: string;
     modifiedAt?: number;
 };
@@ -29,17 +30,17 @@ const SelectedCheckbox = styled.input`
 `;
 
 function ListItemDoc(props: Props) {
-    const { id, title, modifiedAt, variant, onClick, selected, ...otherFlexProps } = props;
+    const { id, index, title, modifiedAt, variant, onClick, selected, ...otherFlexProps } = props;
 
     const modifiedAtDate = modifiedAt ? new Date(modifiedAt) : undefined;
 
-    const onHandleClick = (evt: React.SyntheticEvent) => onClick ? onClick(evt, id) : undefined;
+    const onHandleClick = (evt: React.SyntheticEvent) => onClick ? onClick(evt, index) : undefined;
 
     let content: React.ReactNode = (<>Nothing</>);
     if (variant === 'list') {
         content = (
             <>
-                <Link as={RouterLink} to={'/write'} muted sx={{ flexGrow: 1 }}>
+                <Link as={RouterLink} to={`/write/${id}`} muted sx={{ flexGrow: 1 }}>
                     {title}
                 </Link>
                 <Text as={'small'} color={'text.tertiary'}>
