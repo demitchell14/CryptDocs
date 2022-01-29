@@ -1,4 +1,4 @@
-[![release](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml/badge.svg?event=release)](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml)
+[![release](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml/badge.svg)](https://github.com/demitchell14/CryptDocs/actions/workflows/release.yml)
 
 # TODO make readme
 
