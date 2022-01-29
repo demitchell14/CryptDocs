@@ -1,7 +1,8 @@
 name: release
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   release:
@@ -18,11 +19,6 @@ jobs:
           check-latest: true
           cache: yarn
 
-      - name: Create .npmrc
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
-#          echo "//npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_TOKEN }}" >> .npmrc
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -32,8 +28,12 @@ jobs:
       - name: setup git...
         run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
 
-      - name: Publish
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Pack Release
         run: |
-          node scripts/publish.js
+          yarn pack
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            cryptdocs-client-v*.*.*
