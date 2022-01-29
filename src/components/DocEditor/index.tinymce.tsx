@@ -54,7 +54,7 @@ function DocEditor(props: DocEditorProps) {
         base_url: process.env.NODE_ENV === 'production' ? undefined : '/tinymce',
         // content_css: '/tinymce/skins/ui/oxide/content.css',
         theme_url: `/tinymce/themes/silver/theme.js`,
-        content_css: resolvedColorMode === 'day' ? 'light' : 'dark',
+        content_css: resolvedColorMode === 'day' ? 'default' : 'dark',
         skin: `oxide${resolvedColorMode === 'day' ? '' : '-dark'}`,
         resize: true,
         // toolbar_mode: 'sliding',
